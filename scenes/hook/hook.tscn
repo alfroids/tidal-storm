@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf8a48cwri0kk"]
 
-[ext_resource type="Shader" path="res://assets/shaders/recolor.tres" id="1_7cugh"]
+[ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_7cugh"]
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="1_a3pww"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvd01"]
