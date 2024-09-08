@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5i8hhfp4g6dq"]
+[gd_scene load_steps=7 format=3 uid="uid://c5i8hhfp4g6dq"]
 
 [ext_resource type="FontFile" uid="uid://c36jpb2svd1w" path="res://assets/fonts/NotJamFontPack/Not Jam Blackletter 13/NotJamBlackletter16.ttf" id="1_5j7bw"]
+[ext_resource type="Script" path="res://scenes/levels/intro.gd" id="1_nnmta"]
 [ext_resource type="FontFile" uid="uid://xfinsrs3axfv" path="res://assets/fonts/NotJamFontPack/Not Jam Signature 17/Not Jam Signature 21.ttf" id="2_rtc5d"]
 
 [sub_resource type="Animation" id="Animation_c7xda"]
@@ -72,6 +73,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nnmta")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 layout_mode = 1
@@ -122,3 +124,5 @@ libraries = {
 "": SubResource("AnimationLibrary_owgf6")
 }
 autoplay = "proverb_fade_out"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
