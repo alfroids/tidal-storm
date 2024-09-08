@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf8a48cwri0kk"]
+[gd_scene load_steps=6 format=3 uid="uid://cf8a48cwri0kk"]
 
 [ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_7cugh"]
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="1_a3pww"]
+[ext_resource type="Script" path="res://scenes/hook/hook.gd" id="1_jsmvg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qvd01"]
 shader = ExtResource("1_7cugh")
@@ -12,6 +13,7 @@ radius = 16.0
 
 [node name="Hook" type="Area2D"]
 collision_layer = 2
+script = ExtResource("1_jsmvg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qvd01")
@@ -21,3 +23,5 @@ texture = ExtResource("1_a3pww")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_eythh")
+
+[node name="PullTimer" type="Timer" parent="."]
