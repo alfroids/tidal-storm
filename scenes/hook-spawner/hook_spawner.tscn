@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct43svhgq368s"]
+
+[ext_resource type="Script" path="res://hook_spawner.gd" id="1_sc4in"]
+[ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="2_kwo5c"]
+
+[node name="HookSpawner" type="Path2D"]
+script = ExtResource("1_sc4in")
+hook_scene = ExtResource("2_kwo5c")
+
+[node name="SpawnLocation" type="PathFollow2D" parent="."]
+position = Vector2(-2560, 0)
+rotation = -0.00293254
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

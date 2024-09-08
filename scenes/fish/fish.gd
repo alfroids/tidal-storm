@@ -3,9 +3,9 @@ extends CharacterBody2D
 
 
 
-const MAX_SPEED: float = 400.0
-const ACCELARTION: float = 1600.0
-const DRAG: float = 400.0
+@export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s") var MAX_SPEED: float = 400.0
+@export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var ACCELARTION: float = 1600.0
+@export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var DRAG: float = 400.0
 
 
 func _physics_process(delta: float) -> void:
