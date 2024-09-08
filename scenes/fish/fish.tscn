@@ -7,6 +7,7 @@
 size = Vector2(128, 128)
 
 [node name="Fish" type="CharacterBody2D"]
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_qo50e")
 

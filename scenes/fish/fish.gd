@@ -4,10 +4,8 @@ extends CharacterBody2D
 
 
 const MAX_SPEED: float = 400.0
-const ACCELARTION: float = 1500.0
-const DRAG: float = 600.0
-
-@onready var move_speed: float = 0.0
+const ACCELARTION: float = 1600.0
+const DRAG: float = 400.0
 
 
 func _physics_process(delta: float) -> void:
