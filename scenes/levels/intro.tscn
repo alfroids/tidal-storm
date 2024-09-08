@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5i8hhfp4g6dq"]
-
-[ext_resource type="Script" path="res://scenes/levels/intro.gd" id="1_4vytx"]
+[gd_scene load_steps=4 format=3 uid="uid://c5i8hhfp4g6dq"]
 
 [sub_resource type="Animation" id="Animation_ehucn"]
 resource_name = "proverb_fade_out"
@@ -64,15 +62,13 @@ _data = {
 "proverb_fade_out": SubResource("Animation_ehucn")
 }
 
-[node name="Intro" type="Control" node_paths=PackedStringArray("_anim")]
+[node name="Intro" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4vytx")
-_anim = NodePath("AnimationPlayer")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 layout_mode = 1
@@ -117,3 +113,4 @@ text = " ”A period of peace before a disturbance or crisis;
 libraries = {
 "": SubResource("AnimationLibrary_owgf6")
 }
+autoplay = "proverb_fade_out"
