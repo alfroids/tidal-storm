@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5i8hhfp4g6dq"]
+[gd_scene load_steps=9 format=3 uid="uid://c5i8hhfp4g6dq"]
 
 [ext_resource type="FontFile" uid="uid://c36jpb2svd1w" path="res://assets/fonts/NotJamFontPack/Not Jam Blackletter 13/NotJamBlackletter16.ttf" id="1_5j7bw"]
 [ext_resource type="Script" path="res://scenes/levels/intro.gd" id="1_nnmta"]
 [ext_resource type="FontFile" uid="uid://xfinsrs3axfv" path="res://assets/fonts/NotJamFontPack/Not Jam Signature 17/Not Jam Signature 21.ttf" id="2_rtc5d"]
+[ext_resource type="AudioStream" uid="uid://dk00gglc4rntf" path="res://assets/sfx/AmbientNatureNightRainy.wav" id="4_suer6"]
+[ext_resource type="AudioStream" uid="uid://djndb4wnct8u6" path="res://assets/sfx/Thunder, Very Close, Rain, 01.wav" id="5_ehgyb"]
 
 [sub_resource type="Animation" id="Animation_c7xda"]
 length = 0.001
@@ -30,10 +32,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RainSFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ThunderSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ehucn"]
 resource_name = "proverb_fade_out"
-length = 14.0
+length = 25.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,6 +84,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RainSFX:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0001, 13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ThunderSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owgf6"]
@@ -124,5 +174,13 @@ libraries = {
 "": SubResource("AnimationLibrary_owgf6")
 }
 autoplay = "proverb_fade_out"
+
+[node name="RainSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_suer6")
+volume_db = -5.0
+
+[node name="ThunderSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ehgyb")
+volume_db = -2.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

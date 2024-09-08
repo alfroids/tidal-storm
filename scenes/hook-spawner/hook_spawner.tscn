@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ct43svhgq368s"]
 
-[ext_resource type="Script" path="res://hook_spawner.gd" id="1_sc4in"]
+[ext_resource type="Script" path="res://scenes/hook-spawner/hook_spawner.gd" id="1_sc4in"]
 [ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="2_kwo5c"]
 
 [node name="HookSpawner" type="Path2D"]

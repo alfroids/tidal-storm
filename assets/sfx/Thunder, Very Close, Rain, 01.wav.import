@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://djndb4wnct8u6"
+path="res://.godot/imported/Thunder, Very Close, Rain, 01.wav-0b7d60709ea6a4db56f1318c6265634c.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Thunder, Very Close, Rain, 01.wav"
+dest_files=["res://.godot/imported/Thunder, Very Close, Rain, 01.wav-0b7d60709ea6a4db56f1318c6265634c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
