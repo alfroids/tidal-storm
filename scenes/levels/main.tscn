@@ -3,17 +3,14 @@
 [ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_16qyo"]
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_k0hvx"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/fish/fish.tscn" id="3_eg6kt"]
-[ext_resource type="PackedScene" uid="uid://ct43svhgq368s" path="res://scenes/hook-spawner/hook_spawner.tscn" id="4_cwdmd"]
+[ext_resource type="PackedScene" uid="uid://cgnkemcb2towe" path="res://scenes/boat/boat.tscn" id="4_bkai7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e5g6v"]
 shader = ExtResource("1_16qyo")
 shader_parameter/NewColor = Color(0.137255, 0.854902, 0.894118, 0.478431)
 
-[sub_resource type="Curve2D" id="Curve2D_ourpr"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -640, 0, 0, 0, 0, 0, 640, 0)
-}
-point_count = 2
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
+normal = Vector2(0, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -24,21 +21,25 @@ follow_viewport_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_e5g6v")
+position = Vector2(0, 960)
 texture = ExtResource("2_k0hvx")
 region_enabled = true
 region_rect = Rect2(0, 0, 5120, 1920)
 
+[node name="SurfaceLayer" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SurfaceLayer"]
+shape = SubResource("WorldBoundaryShape2D_hixgo")
+
 [node name="Fish" parent="." instance=ExtResource("3_eg6kt")]
+position = Vector2(0, 384)
 
 [node name="Camera2D" type="Camera2D" parent="Fish"]
 zoom = Vector2(0.6, 0.6)
 process_callback = 0
-limit_left = -2560
-limit_top = -960
-limit_right = 2560
-limit_bottom = 960
-limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="HookSpawner" parent="." instance=ExtResource("4_cwdmd")]
-curve = SubResource("Curve2D_ourpr")
+[node name="Boat" parent="." instance=ExtResource("4_bkai7")]
+position = Vector2(0, -64)

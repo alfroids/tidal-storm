@@ -24,3 +24,5 @@ texture = ExtResource("3_38ep4")
 shape = SubResource("CircleShape2D_eythh")
 
 [node name="PullTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PullTimer" to="." method="_on_pull_timer_timeout"]
