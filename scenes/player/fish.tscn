@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb21uipacresu"]
 
-[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://icon.svg" id="1_bvb3k"]
+[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="1_bvb3k"]
 [ext_resource type="Script" path="res://scenes/player/fish.gd" id="1_qo50e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvrfm"]
