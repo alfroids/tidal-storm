@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5i8hhfp4g6dq"]
+[gd_scene load_steps=6 format=3 uid="uid://c5i8hhfp4g6dq"]
+
+[ext_resource type="FontFile" uid="uid://c36jpb2svd1w" path="res://assets/fonts/NotJamFontPack/Not Jam Blackletter 13/NotJamBlackletter16.ttf" id="1_5j7bw"]
+[ext_resource type="FontFile" uid="uid://xfinsrs3axfv" path="res://assets/fonts/NotJamFontPack/Not Jam Signature 17/Not Jam Signature 21.ttf" id="2_rtc5d"]
 
 [sub_resource type="Animation" id="Animation_c7xda"]
 length = 0.001
@@ -92,7 +95,8 @@ offset_right = 363.5
 offset_bottom = -271.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 56
+theme_override_fonts/font = ExtResource("1_5j7bw")
+theme_override_font_sizes/font_size = 98
 text = "The Calm before the Storm"
 
 [node name="DefinitionText" type="Label" parent="."]
@@ -108,7 +112,8 @@ offset_right = 426.0
 offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_rtc5d")
+theme_override_font_sizes/font_size = 82
 text = " ”A period of peace before a disturbance or crisis;
       an unnatural or false calm before a storm”"
 
