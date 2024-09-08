@@ -12,7 +12,7 @@ shader_parameter/NewColor = Color(0.486275, 0.145098, 0.666667, 1)
 size = Vector2(128, 128)
 
 [node name="Fish" type="CharacterBody2D"]
-collision_mask = 0
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_qo50e")
 

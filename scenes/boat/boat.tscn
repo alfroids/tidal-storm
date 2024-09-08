@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgnkemcb2towe"]
+
+[ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_7yvaq"]
+[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_ka30x"]
+[ext_resource type="Script" path="res://scenes/boat/boat.gd" id="3_u6p7u"]
+[ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="4_es6nh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7i5e"]
+shader = ExtResource("1_7yvaq")
+shader_parameter/NewColor = Color(0.882353, 0.341176, 0.105882, 1)
+
+[node name="Boat" type="Sprite2D"]
+material = SubResource("ShaderMaterial_e7i5e")
+texture = ExtResource("2_ka30x")
+script = ExtResource("3_u6p7u")
+hook_scene = ExtResource("4_es6nh")
+
+[node name="HookSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 64)
