@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb21uipacresu"]
+[gd_scene load_steps=6 format=3 uid="uid://bb21uipacresu"]
 
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="1_bvb3k"]
 [ext_resource type="Script" path="res://scenes/fish/fish.gd" id="1_qo50e"]
+[ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="2_0kxy3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wto4o"]
+shader = ExtResource("2_0kxy3")
+shader_parameter/NewColor = Color(0.486275, 0.145098, 0.666667, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvrfm"]
 size = Vector2(128, 128)
@@ -12,7 +17,9 @@ motion_mode = 1
 script = ExtResource("1_qo50e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_wto4o")
 texture = ExtResource("1_bvb3k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_vvrfm")
