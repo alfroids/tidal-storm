@@ -1,15 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://bb21uipacresu"]
+[gd_scene load_steps=8 format=3 uid="uid://bb21uipacresu"]
 
-[ext_resource type="Script" path="res://scenes/fish/fish.gd" id="1_qo50e"]
-[ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="2_0kxy3"]
+[ext_resource type="Script" path="res://scenes/octopus/octopus.gd" id="1_qo50e"]
 [ext_resource type="Texture2D" uid="uid://b5xpej7262eyn" path="res://assets/sprites/octopus_sprite_sheet.png" id="3_jijj6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wto4o"]
-shader = ExtResource("2_0kxy3")
-shader_parameter/NewColor = Color(0.486275, 0.145098, 0.666667, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1ik8"]
+radius = 48.6621
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvrfm"]
-size = Vector2(128, 128)
+[sub_resource type="Animation" id="Animation_80m3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
 
 [sub_resource type="Animation" id="Animation_80m3o"]
 length = 0.001
@@ -67,15 +77,12 @@ _data = {
 "swim": SubResource("Animation_8ntpu")
 }
 
-[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("_anim")]
+[node name="Octopus" type="CharacterBody2D"]
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_qo50e")
-_anim = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_wto4o")
 position = Vector2(-1, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("3_jijj6")
@@ -84,7 +91,7 @@ vframes = 3
 frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_vvrfm")
+shape = SubResource("CircleShape2D_w1ik8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

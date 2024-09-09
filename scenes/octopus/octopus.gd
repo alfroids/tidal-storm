@@ -1,18 +1,18 @@
-class_name Fish
+class_name Octopus
 extends CharacterBody2D
-
-@export var _anim: AnimationPlayer
 
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s") var MAX_SPEED: float = 400.0
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var ACCELARTION: float = 1600.0
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var DRAG: float = 400.0
+
+@onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
 	var move_x: float = Input.get_action_strength(&"move_right") - Input.get_action_strength(&"move_left")
 	var move_y: float = Input.get_action_strength(&"move_down") - Input.get_action_strength(&"move_up")
 	var move_dir: Vector2 = Vector2(move_x, move_y).normalized()
-	
+
 	if not move_dir:
 		var drag: float = delta * DRAG
 		if velocity.length_squared() > drag**2:
@@ -22,15 +22,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity += delta * ACCELARTION * move_dir
 		velocity = velocity.limit_length(MAX_SPEED)
-	
+
 	if velocity == Vector2.ZERO:
-		_anim.play("idle")
+		animation_player.play("idle")
 	else:
 		if move_x == 1:
-			_anim.play("swim")
+			animation_player.play("swim")
 			$Sprite2D.flip_h = false
 		elif move_x == -1:
-			_anim.play("swim")
+			animation_player.play("swim")
 			$Sprite2D.flip_h = true
-	
+
 	move_and_slide()
