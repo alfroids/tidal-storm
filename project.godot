@@ -63,3 +63,8 @@ esc={
 2d_physics/layer_1="fish"
 2d_physics/layer_2="hook"
 2d_physics/layer_3="environment"
+
+[physics]
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true

@@ -15,7 +15,6 @@ normal = Vector2(0, 1)
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="CanvasLayer" parent="."]
-layer = -1
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
@@ -39,6 +38,7 @@ position = Vector2(0, 384)
 [node name="Camera2D" type="Camera2D" parent="Fish"]
 process_callback = 0
 position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
 
@@ -47,8 +47,5 @@ position = Vector2(-2944, 0)
 
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
 position = Vector2(2944, 0)
-
-[node name="MoveLocation" parent="BoatManager/MovePath" index="0"]
-position = Vector2(-2560, 0)
 
 [editable path="BoatManager"]
