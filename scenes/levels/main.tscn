@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=7 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
+[ext_resource type="Script" path="res://scenes/management/calm_storm_cycle.gd" id="3_gt8yo"]
+[ext_resource type="Texture2D" uid="uid://bj4lajhk1ltxu" path="res://assets/gradient/calm_storm_gradient.tres" id="4_08fmc"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
@@ -37,5 +39,9 @@ shape = SubResource("WorldBoundaryShape2D_hixgo")
 material = SubResource("ShaderMaterial_idc05")
 color = Color(0.129412, 0.737255, 0.901961, 0.227451)
 polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+script = ExtResource("3_gt8yo")
+gradient = ExtResource("4_08fmc")
 
 [editable path="BoatManager"]
