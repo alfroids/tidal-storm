@@ -12,8 +12,8 @@ normal = Vector2(0, 1)
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("_calm_timer", "_storm_timer", "_canvas_modulate")]
 script = ExtResource("1_4jlsr")
-_calm_timer = NodePath("TimerManager/CalmTimer")
-_storm_timer = NodePath("TimerManager/StormTimer")
+_calm_timer = NodePath("CycleManager/CalmTimer")
+_storm_timer = NodePath("CycleManager/StormTimer")
 _canvas_modulate = NodePath("CanvasModulate")
 
 [node name="Octopus" parent="." instance=ExtResource("3_eg6kt")]
@@ -44,14 +44,14 @@ material = SubResource("ShaderMaterial_idc05")
 color = Color(0.129412, 0.737255, 0.901961, 0.227451)
 polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
 
-[node name="TimerManager" type="Node" parent="."]
+[node name="CycleManager" type="Node" parent="."]
 
-[node name="CalmTimer" type="Timer" parent="TimerManager"]
+[node name="CalmTimer" type="Timer" parent="CycleManager"]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="StormTimer" type="Timer" parent="TimerManager"]
+[node name="StormTimer" type="Timer" parent="CycleManager"]
 wait_time = 5.0
 one_shot = true
 
@@ -62,7 +62,7 @@ texture = ExtResource("4_l32tu")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0463632, 0.0430813, 0.169865, 1)
 
-[connection signal="timeout" from="TimerManager/CalmTimer" to="." method="_on_calm_timer_timeout"]
-[connection signal="timeout" from="TimerManager/StormTimer" to="." method="_on_storm_timer_timeout"]
+[connection signal="timeout" from="CycleManager/CalmTimer" to="." method="_on_calm_timer_timeout"]
+[connection signal="timeout" from="CycleManager/StormTimer" to="." method="_on_storm_timer_timeout"]
 
 [editable path="BoatManager"]
