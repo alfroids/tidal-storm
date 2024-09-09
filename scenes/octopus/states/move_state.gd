@@ -5,6 +5,7 @@ extends State
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var acceleration: float = 1600.0
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s²") var drag: float = 400.0
 @export var idle_state: State
+@export var dash_state: State
 
 @onready var octopus: Octopus = owner as Octopus
 @onready var sprite_2d: Sprite2D = $"../../Sprite2D" as Sprite2D
@@ -37,6 +38,10 @@ func physics_update(delta: float) -> void:
 	var move_y: float = Input.get_action_strength(&"move_down") - Input.get_action_strength(&"move_up")
 	var move_dir: Vector2 = Vector2(move_x, move_y).normalized()
 
+	if Input.is_action_just_pressed(&"dash"):
+		change_state(dash_state, {"direction": move_dir})
+		return
+
 	if move_x == 1:
 		sprite_2d.flip_h = false
 	elif move_x == -1:
@@ -53,8 +58,13 @@ func physics_update(delta: float) -> void:
 			octopus.velocity -= d * octopus.velocity.normalized()
 		else:
 			change_state(idle_state)
+			return
 	else:
-		octopus.velocity += delta * acceleration * move_dir
-		octopus.velocity = octopus.velocity.limit_length(max_speed)
+		if octopus.velocity.length_squared() > max_speed**2:
+			var speed: float = maxf(octopus.velocity.length() - delta * drag, max_speed)
+			octopus.velocity = speed * move_dir
+		else:
+			octopus.velocity += delta * acceleration * move_dir
+			octopus.velocity = octopus.velocity.limit_length(max_speed)
 
 	octopus.move_and_slide()

@@ -93,23 +93,28 @@ libraries = {
 script = ExtResource("3_l7eu4")
 default_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state", "dash_state")]
 script = ExtResource("4_0v1hu")
 move_state = NodePath("../Move")
+dash_state = NodePath("../Dash")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "dash_state")]
 script = ExtResource("5_ertig")
 idle_state = NodePath("../Idle")
+dash_state = NodePath("../Dash")
 
-[node name="Dash" type="Node" parent="StateMachine"]
+[node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("6_tafg8")
+move_state = NodePath("../Move")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 rotation = 1.56517
 scale = Vector2(1.00045, 1.67977)
 texture = ExtResource("7_28um0")
 
 [node name="DustParticles" type="CPUParticles2D" parent="."]
+visible = false
 amount = 100
 lifetime = 4.0
 emission_shape = 3
@@ -122,6 +127,7 @@ damping_min = 2.0
 damping_max = 5.0
 
 [node name="BubblesParticles" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -3)
 amount = 5
 lifetime = 10.0

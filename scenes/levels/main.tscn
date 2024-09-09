@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=6 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
@@ -7,8 +7,6 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_idc05"]
 
 [node name="Main" type="Node2D" node_paths=PackedStringArray("_calm_timer", "_storm_timer", "_canvas_modulate")]
 script = ExtResource("1_4jlsr")
@@ -40,7 +38,6 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
 [node name="Water" type="Polygon2D" parent="."]
-material = SubResource("ShaderMaterial_idc05")
 color = Color(0.129412, 0.737255, 0.901961, 0.227451)
 polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
 
