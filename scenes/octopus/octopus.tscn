@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb21uipacresu"]
+[gd_scene load_steps=14 format=3 uid="uid://bb21uipacresu"]
 
 [ext_resource type="Script" path="res://scenes/octopus/octopus.gd" id="1_qo50e"]
 [ext_resource type="Texture2D" uid="uid://b5xpej7262eyn" path="res://assets/sprites/octopus_sprite_sheet.png" id="3_jijj6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/octopus/states/move_state.gd" id="5_ertig"]
 [ext_resource type="Script" path="res://scenes/octopus/states/dash_state.gd" id="6_tafg8"]
 [ext_resource type="Texture2D" uid="uid://vlxh3fhan7s1" path="res://assets/lights/lantern light 2.png" id="7_28um0"]
+[ext_resource type="Texture2D" uid="uid://d13gyrmtdht4u" path="res://assets/sprites/bubble.png" id="8_tpe6r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1ik8"]
 radius = 48.6621
@@ -108,7 +109,7 @@ rotation = 1.56517
 scale = Vector2(1.00045, 1.67977)
 texture = ExtResource("7_28um0")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="DustParticles" type="CPUParticles2D" parent="."]
 amount = 100
 lifetime = 4.0
 emission_shape = 3
@@ -117,5 +118,19 @@ direction = Vector2(1, -1)
 gravity = Vector2(0, 0)
 initial_velocity_min = 15.0
 initial_velocity_max = 25.0
+damping_min = 2.0
+damping_max = 5.0
+
+[node name="BubblesParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -3)
+amount = 5
+lifetime = 10.0
+texture = ExtResource("8_tpe6r")
+emission_shape = 3
+emission_rect_extents = Vector2(250, 250)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 45.0
 damping_min = 2.0
 damping_max = 5.0
