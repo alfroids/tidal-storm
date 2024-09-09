@@ -24,5 +24,3 @@ curve = SubResource("Curve2D_1ig5l")
 
 [node name="MoveLocation" type="PathFollow2D" parent="MovePath"]
 position = Vector2(-704, 0)
-
-[node name="Camera2D" type="Camera2D" parent="."]
