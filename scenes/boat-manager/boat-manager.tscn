@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ye3rq14ioe58"]
+
+[ext_resource type="Script" path="res://scenes/boat-manager/boat-manager.gd" id="1_p4776"]
+[ext_resource type="PackedScene" uid="uid://cgnkemcb2towe" path="res://scenes/boat/boat.tscn" id="2_1vqm6"]
+
+[sub_resource type="Curve2D" id="Curve2D_1ig5l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -704, 0, 0, 0, 0, 0, 704, 0)
+}
+point_count = 2
+
+[node name="BoatManager" type="Node2D"]
+script = ExtResource("1_p4776")
+boat_scene = ExtResource("2_1vqm6")
+
+[node name="SpawnLocation1" type="Marker2D" parent="."]
+position = Vector2(-832, 0)
+
+[node name="SpawnLocation2" type="Marker2D" parent="."]
+position = Vector2(832, 0)
+
+[node name="MovePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1ig5l")
+
+[node name="MoveLocation" type="PathFollow2D" parent="MovePath"]
+position = Vector2(-704, 0)
