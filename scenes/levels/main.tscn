@@ -48,7 +48,4 @@ position = Vector2(-2944, 0)
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
 position = Vector2(2944, 0)
 
-[node name="MoveLocation" parent="BoatManager/MovePath" index="0"]
-position = Vector2(-2560, 0)
-
 [editable path="BoatManager"]
