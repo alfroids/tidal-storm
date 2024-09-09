@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb21uipacresu"]
+[gd_scene load_steps=13 format=3 uid="uid://bb21uipacresu"]
 
 [ext_resource type="Script" path="res://scenes/octopus/octopus.gd" id="1_qo50e"]
 [ext_resource type="Texture2D" uid="uid://b5xpej7262eyn" path="res://assets/sprites/octopus_sprite_sheet.png" id="3_jijj6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/octopus/states/idle_state.gd" id="4_0v1hu"]
 [ext_resource type="Script" path="res://scenes/octopus/states/move_state.gd" id="5_ertig"]
 [ext_resource type="Script" path="res://scenes/octopus/states/dash_state.gd" id="6_tafg8"]
+[ext_resource type="Texture2D" uid="uid://vlxh3fhan7s1" path="res://assets/lights/lantern light 2.png" id="7_28um0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1ik8"]
 radius = 48.6621
@@ -101,3 +102,8 @@ idle_state = NodePath("../Idle")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("6_tafg8")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+rotation = 1.56517
+scale = Vector2(1.00045, 1.67977)
+texture = ExtResource("7_28um0")
