@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_16qyo"]
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_k0hvx"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/fish/fish.tscn" id="3_eg6kt"]
-[ext_resource type="PackedScene" uid="uid://cgnkemcb2towe" path="res://scenes/boat/boat.tscn" id="4_bkai7"]
+[ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e5g6v"]
 shader = ExtResource("1_16qyo")
@@ -37,9 +37,18 @@ shape = SubResource("WorldBoundaryShape2D_hixgo")
 position = Vector2(0, 384)
 
 [node name="Camera2D" type="Camera2D" parent="Fish"]
-zoom = Vector2(0.6, 0.6)
 process_callback = 0
 position_smoothing_enabled = true
 
-[node name="Boat" parent="." instance=ExtResource("4_bkai7")]
-position = Vector2(0, -64)
+[node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
+
+[node name="SpawnLocation1" parent="BoatManager" index="0"]
+position = Vector2(-2944, 0)
+
+[node name="SpawnLocation2" parent="BoatManager" index="1"]
+position = Vector2(2944, 0)
+
+[node name="MoveLocation" parent="BoatManager/MovePath" index="0"]
+position = Vector2(-2560, 0)
+
+[editable path="BoatManager"]

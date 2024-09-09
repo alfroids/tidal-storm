@@ -2,16 +2,15 @@ class_name Hook
 extends Area2D
 
 
+signal thrown()
 signal pulled()
 
 const SPEED: float = 400.0
 
 var target_depth: float = 800.0
 
-@onready var pull_timer: Timer = $PullTimer as Timer
 
-
-func _ready() -> void:
+func throw() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(
 		self,
@@ -19,10 +18,11 @@ func _ready() -> void:
 		target_depth * Vector2.DOWN,
 		target_depth / SPEED,
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	tween.finished.connect(pull_timer.start)
+	await tween.finished
+	thrown.emit()
 
 
-func _on_pull_timer_timeout() -> void:
+func pull() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(
 		self,
@@ -30,7 +30,6 @@ func _on_pull_timer_timeout() -> void:
 		Vector2.ZERO,
 		target_depth / SPEED,
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	tween.finished.connect(func():
-		pulled.emit()
-		queue_free()
-	)
+	await tween.finished
+	pulled.emit()
+	queue_free()
