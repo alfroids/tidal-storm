@@ -47,24 +47,18 @@ func physics_update(delta: float) -> void:
 	elif move_x == -1:
 		sprite_2d.flip_h = true
 
-	if sprite_2d.flip_h:
-		sprite_2d.rotation = move_y * deg_to_rad(-25.0)
-	else:
-		sprite_2d.rotation = move_y * deg_to_rad(25.0)
+	octopus.velocity -= delta * drag * octopus.velocity.normalized()
 
-	if not move_dir:
-		var d: float = delta * drag
-		if octopus.velocity.length_squared() > d**2:
-			octopus.velocity -= d * octopus.velocity.normalized()
-		else:
-			change_state(idle_state)
-			return
+	if not move_dir and octopus.velocity.length_squared() < (delta * drag)**2:
+		change_state(idle_state)
+		return
+
+	octopus.velocity += delta * acceleration * move_dir
+	octopus.velocity = octopus.velocity.limit_length(max_speed)
+
+	if sprite_2d.flip_h:
+		sprite_2d.rotation = Vector2.LEFT.angle_to(octopus.velocity)
 	else:
-		if octopus.velocity.length_squared() > max_speed**2:
-			var speed: float = maxf(octopus.velocity.length() - delta * drag, max_speed)
-			octopus.velocity = speed * move_dir
-		else:
-			octopus.velocity += delta * acceleration * move_dir
-			octopus.velocity = octopus.velocity.limit_length(max_speed)
+		sprite_2d.rotation = Vector2.RIGHT.angle_to(octopus.velocity)
 
 	octopus.move_and_slide()

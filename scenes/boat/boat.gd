@@ -12,7 +12,7 @@ const SPEED: float = 200.0
 
 
 func move_to(pos: Vector2) -> void:
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(
 		self,
 		^"global_position",

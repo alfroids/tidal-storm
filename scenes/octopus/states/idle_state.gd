@@ -9,6 +9,8 @@ extends State
 
 ## Called when this State is being activated.
 func enter(_msg: Dictionary = {}) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property($"../../Sprite2D", ^"rotation", 0.0, 0.1)
 	animation_player.play("idle")
 
 

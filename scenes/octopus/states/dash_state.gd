@@ -1,7 +1,7 @@
 extends State
 
 
-const DURATION: int = 10
+const DURATION: int = 15
 
 @export_range(100.0, 2000.0, 50.0, "or_greater", "suffix:px/s") var dash_speed: float = 800.0
 @export var move_state: State
@@ -13,14 +13,21 @@ const DURATION: int = 10
 
 ## Called when this State is being activated.
 func enter(msg: Dictionary = {}) -> void:
+	var sprite_2d: Sprite2D = $"../../Sprite2D" as Sprite2D
+
 	if msg.has("direction"):
 		direction = msg["direction"]
 
 	if not direction:
-		if ($"../../Sprite2D" as Sprite2D).flip_h:
+		if sprite_2d.flip_h:
 			direction = Vector2.LEFT
 		else:
 			direction = Vector2.RIGHT
+
+	if sprite_2d.flip_h:
+		sprite_2d.rotation = Vector2.LEFT.angle_to(direction)
+	else:
+		sprite_2d.rotation = Vector2.RIGHT.angle_to(direction)
 
 	duration_count = 0
 

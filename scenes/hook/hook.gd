@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func throw(depth: float) -> void:
 	collision_shape_2d.disabled = true
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(
 		self,
 		^"position",
@@ -29,7 +29,7 @@ func throw(depth: float) -> void:
 
 
 func pull() -> void:
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(
 		self,
 		^"position",
