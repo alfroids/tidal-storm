@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine as StateMachine
 
+func _ready():
+	animation_player.play("sleep")
 
 func _physics_process(delta: float) -> void:
 	state_machine.physics_update(delta)
