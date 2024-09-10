@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="4_t3ohp"]
 [ext_resource type="PackedScene" uid="uid://bnjbjiesepb0" path="res://scenes/management/cycle_manager.tscn" id="5_g8n1i"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
+[ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/lights/light_orb.tscn" id="7_3dddv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
@@ -67,7 +68,6 @@ polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
 [node name="CycleManager" parent="." instance=ExtResource("5_g8n1i")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.0463632, 0.0430813, 0.169865, 1)
 
 [node name="LightManager" type="Node" parent="."]
@@ -91,5 +91,17 @@ texture = ExtResource("4_l32tu")
 [node name="SunLight5" type="PointLight2D" parent="LightManager"]
 position = Vector2(-383, 99)
 texture = ExtResource("4_l32tu")
+
+[node name="LightOrb" parent="LightManager" instance=ExtResource("7_3dddv")]
+position = Vector2(-350, 461)
+
+[node name="LightOrb2" parent="LightManager" instance=ExtResource("7_3dddv")]
+position = Vector2(-882, 408)
+
+[node name="LightOrb3" parent="LightManager" instance=ExtResource("7_3dddv")]
+position = Vector2(1034, 648)
+
+[node name="LightOrb4" parent="LightManager" instance=ExtResource("7_3dddv")]
+position = Vector2(230, 749)
 
 [editable path="BoatManager"]

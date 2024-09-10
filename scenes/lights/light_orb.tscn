@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wqflljuyalmk"]
+
+[ext_resource type="Texture2D" uid="uid://ccw35qdnnya40" path="res://assets/sprites/light_orb.png" id="1_keutm"]
+[ext_resource type="Texture2D" uid="uid://b2dlu7xcusveu" path="res://assets/lights/hud lantern light.png" id="2_cy1qu"]
+
+[node name="LightOrb" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_keutm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.32549, 0.6, 0.529412, 1)
+energy = 0.7
+texture = ExtResource("2_cy1qu")
+texture_scale = 3.0
