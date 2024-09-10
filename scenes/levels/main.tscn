@@ -14,6 +14,13 @@ _calm_timer = NodePath("CycleManager/CalmTimer")
 _storm_timer = NodePath("CycleManager/StormTimer")
 _canvas_modulate = NodePath("CanvasModulate")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -9420.0
+offset_top = 2.0
+offset_right = 10953.0
+offset_bottom = 6708.0
+color = Color(0.0658915, 0.0858161, 0.462326, 1)
+
 [node name="Octopus" parent="." instance=ExtResource("3_eg6kt")]
 position = Vector2(0, 384)
 
@@ -38,6 +45,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
 [node name="Water" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.129412, 0.737255, 0.901961, 0.227451)
 polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
 
@@ -52,12 +60,30 @@ autostart = true
 wait_time = 5.0
 one_shot = true
 
-[node name="SunLight" type="PointLight2D" parent="."]
-position = Vector2(-390, 369)
-texture = ExtResource("4_l32tu")
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.0463632, 0.0430813, 0.169865, 1)
+
+[node name="LightManager" type="Node" parent="."]
+
+[node name="SunLight" type="PointLight2D" parent="LightManager"]
+position = Vector2(-1069, 110)
+texture = ExtResource("4_l32tu")
+
+[node name="SunLight2" type="PointLight2D" parent="LightManager"]
+position = Vector2(824, 779)
+texture = ExtResource("4_l32tu")
+
+[node name="SunLight3" type="PointLight2D" parent="LightManager"]
+position = Vector2(-2543, 965)
+texture = ExtResource("4_l32tu")
+
+[node name="SunLight4" type="PointLight2D" parent="LightManager"]
+position = Vector2(2092, 144)
+texture = ExtResource("4_l32tu")
+
+[node name="SunLight5" type="PointLight2D" parent="LightManager"]
+position = Vector2(-383, 99)
+texture = ExtResource("4_l32tu")
 
 [connection signal="timeout" from="CycleManager/CalmTimer" to="." method="_on_calm_timer_timeout"]
 [connection signal="timeout" from="CycleManager/StormTimer" to="." method="_on_storm_timer_timeout"]
