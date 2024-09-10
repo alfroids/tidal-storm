@@ -31,5 +31,8 @@ func throw_hook(depth: float) -> void:
 
 func pull_hook() -> void:
 	hook.pull()
-	await hook.returned
+
+
+func _on_hook_returned() -> void:
+	hook_timer.stop()
 	pulled_hook.emit(self)

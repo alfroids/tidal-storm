@@ -8,6 +8,7 @@ signal returned()
 const SPEED: float = 400.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D as CollisionShape2D
+@onready var armed: bool = false
 
 
 func _ready() -> void:
@@ -24,11 +25,16 @@ func throw(depth: float) -> void:
 		depth / SPEED,
 	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	armed = true
 	collision_shape_2d.disabled = false
 	reached_target_depth.emit()
 
 
 func pull() -> void:
+	if not armed:
+		return
+
+	armed = false
 	var tween: Tween = create_tween()
 	tween.tween_property(
 		self,
@@ -39,3 +45,7 @@ func pull() -> void:
 	await tween.finished
 	collision_shape_2d.disabled = true
 	returned.emit()
+
+
+func _on_body_entered(_body: Node2D) -> void:
+	pull()
