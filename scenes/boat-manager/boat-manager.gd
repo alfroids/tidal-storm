@@ -12,8 +12,8 @@ extends Node2D
 @onready var move_location: PathFollow2D = $MovePath/MoveLocation as PathFollow2D
 
 
-func _ready() -> void:
-	spawn_boat()
+#func _ready() -> void:
+	#spawn_boat()
 
 
 func spawn_boat() -> void:
@@ -31,3 +31,22 @@ func move_and_throw_hook(boat: Boat) -> void:
 	boat.move_to(pos)
 	await boat.reached_target_position
 	boat.throw_hook(randf_range(min_hook_depth, max_hook_depth))
+
+
+func move_and_queue_free(boat: Boat) -> void:
+	var spawn_location: Marker2D = spawn_locations.pick_random()
+	boat.move_to(spawn_location.global_position)
+	await boat.reached_target_position
+	boat.queue_free()
+
+
+func start_storm(num_boats: int) -> void:
+	for _i in range(num_boats):
+		spawn_boat()
+		await get_tree().create_timer(0.5).timeout
+
+
+func end_storm() -> void:
+	for boat: Boat in get_tree().get_nodes_in_group(&"boats"):
+		move_and_queue_free(boat)
+		await get_tree().create_timer(0.5).timeout

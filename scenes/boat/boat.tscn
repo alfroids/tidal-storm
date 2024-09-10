@@ -9,7 +9,7 @@
 shader = ExtResource("1_7yvaq")
 shader_parameter/NewColor = Color(0.882353, 0.341176, 0.105882, 1)
 
-[node name="Boat" type="Node2D"]
+[node name="Boat" type="Node2D" groups=["boats"]]
 script = ExtResource("3_u6p7u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

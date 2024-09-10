@@ -12,6 +12,10 @@ const SPEED: float = 200.0
 
 
 func move_to(pos: Vector2) -> void:
+	if hook.armed:
+		pull_hook()
+		await hook.returned
+
 	var tween: Tween = create_tween()
 	tween.tween_property(
 		self,
