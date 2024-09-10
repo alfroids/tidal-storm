@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnjbjiesepb0"]
+
+[ext_resource type="Script" path="res://scenes/management/cycle_manager.gd" id="1_1akce"]
+
+[node name="CycleManager" type="Node"]
+script = ExtResource("1_1akce")
+
+[node name="CalmTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="StormTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="CalmTimer" to="." method="_on_calm_timer_timeout"]
+[connection signal="timeout" from="StormTimer" to="." method="_on_storm_timer_timeout"]

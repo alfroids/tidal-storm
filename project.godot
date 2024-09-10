@@ -31,6 +31,10 @@ folder_colors={
 "res://scenes/": "green"
 }
 
+[global_group]
+
+boats=""
+
 [input]
 
 move_up={

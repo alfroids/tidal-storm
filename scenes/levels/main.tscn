@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="4_t3ohp"]
+[ext_resource type="PackedScene" uid="uid://bnjbjiesepb0" path="res://scenes/management/cycle_manager.tscn" id="5_g8n1i"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
@@ -24,10 +25,8 @@ shader_parameter/movement_direction = Vector2(1, 0)
 shader_parameter/movement_speed = 0.1
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_he17s")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("_calm_timer", "_storm_timer", "_canvas_modulate")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("_canvas_modulate")]
 script = ExtResource("1_4jlsr")
-_calm_timer = NodePath("CycleManager/CalmTimer")
-_storm_timer = NodePath("CycleManager/StormTimer")
 _canvas_modulate = NodePath("CanvasModulate")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -65,16 +64,7 @@ material = SubResource("ShaderMaterial_hnmdd")
 color = Color(0.129412, 0.737255, 0.901961, 0.227451)
 polygon = PackedVector2Array(-704, 0, 704, 0, 704, 1344, -704, 1344)
 
-[node name="CycleManager" type="Node" parent="."]
-
-[node name="CalmTimer" type="Timer" parent="CycleManager"]
-wait_time = 5.0
-one_shot = true
-autostart = true
-
-[node name="StormTimer" type="Timer" parent="CycleManager"]
-wait_time = 5.0
-one_shot = true
+[node name="CycleManager" parent="." instance=ExtResource("5_g8n1i")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -101,8 +91,5 @@ texture = ExtResource("4_l32tu")
 [node name="SunLight5" type="PointLight2D" parent="LightManager"]
 position = Vector2(-383, 99)
 texture = ExtResource("4_l32tu")
-
-[connection signal="timeout" from="CycleManager/CalmTimer" to="." method="_on_calm_timer_timeout"]
-[connection signal="timeout" from="CycleManager/StormTimer" to="." method="_on_storm_timer_timeout"]
 
 [editable path="BoatManager"]
