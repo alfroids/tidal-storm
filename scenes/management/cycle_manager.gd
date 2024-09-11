@@ -1,29 +1,34 @@
 extends Node
 
+signal cycle_start
+
+@export var calm_timer: Timer
+@export var storm_timer: Timer
+
+@onready var previous_cycle = "calm"
+@onready var curr_cycle = "calm"
+
+func _on_calm_timer_timeout():
+	curr_cycle = "storm"
+	cycle_start.emit()
+	print("calm ended")
+	storm_timer.start()
+
+func _on_storm_timer_timeout():
+	curr_cycle = "calm"
+	cycle_start.emit()
+	print("storm ended")
+	calm_timer.start()
+
+
+
+# Seu código tá aqui em baixo. Nao quis me livrar dele fhushuessajuh
+
 #signal calm_cycle_started()
 #signal calm_cycle_ended()
 #signal storm_cycle_started()
 #signal storm_cycle_ended()
 
-signal cycle_start(type)
-
-
-# CalmTimer tá em autostart. Talvez seja necessário startar 
-# Só quando chegar na cena do jogo de fato.
-# teria q capturar qual a cena atual, talvez
-
-@export var calm_timer: Timer
-@export var storm_timer: Timer
-
-func _on_calm_timer_timeout():
-	print("calm ended")
-	storm_timer.start()
-	cycle_start.emit("storm") # tipo de ciclo que vai começar
-
-func _on_storm_timer_timeout():
-	print("storm ended")
-	calm_timer.start()
-	cycle_start.emit("calm")
 
 #@onready var calm_timer: Timer = $CalmTimer as Timer
 #@onready var storm_timer: Timer = $StormTimer as Timer
