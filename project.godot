@@ -17,7 +17,7 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-CycleManager="*res://scenes/management/cycle_manager.gd"
+CycleManager="*res://scenes/management/cycle_manager.tscn"
 
 [display]
 
