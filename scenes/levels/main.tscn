@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bnjbjiesepb0" path="res://scenes/management/cycle_manager.tscn" id="5_g8n1i"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/lights/light_orb.tscn" id="7_3dddv"]
-[ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
@@ -27,9 +26,8 @@ shader_parameter/movement_direction = Vector2(1, 0)
 shader_parameter/movement_speed = 0.1
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_he17s")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("_canvas_modulate")]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_4jlsr")
-_canvas_modulate = NodePath("CanvasCycles/CanvasModulate")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -9420.0
@@ -102,7 +100,4 @@ position = Vector2(1034, 648)
 [node name="LightOrb4" parent="LightManager" instance=ExtResource("7_3dddv")]
 position = Vector2(230, 749)
 
-[node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
-
 [editable path="BoatManager"]
-[editable path="CanvasCycles"]

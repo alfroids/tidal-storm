@@ -1,9 +1,16 @@
 extends Node2D
 
-#@export var _calm_timer: Timer
-#@export var _storm_timer: Timer
-#@export var _canvas_modulate: CanvasModulate
-#
+@export var _canvas_modulate: CanvasModulate
+
+func _ready():
+	_canvas_modulate.color = Color("#6f8695") # initial Canvas color
+
+func _process(delta):
+	#CycleManager.calm_cycle_ended.connect() # Capturing when calm ended
+	pass
+
+
+
 #func _ready():
 	#_canvas_modulate.color = Color("#6f8695")
 #
