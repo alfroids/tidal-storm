@@ -8,12 +8,12 @@ calm_timer = NodePath("CalmTimer")
 storm_timer = NodePath("StormTimer")
 
 [node name="CalmTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
 [node name="StormTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="timeout" from="CalmTimer" to="." method="_on_calm_timer_timeout"]
