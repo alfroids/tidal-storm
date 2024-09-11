@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=13 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="4_t3ohp"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/lights/light_orb.tscn" id="7_3dddv"]
+[ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/ui.tscn" id="8_du70m"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
@@ -89,5 +90,7 @@ position = Vector2(1034, 648)
 position = Vector2(230, 749)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
+
+[node name="UI" parent="." instance=ExtResource("8_du70m")]
 
 [editable path="BoatManager"]
