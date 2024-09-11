@@ -1,6 +1,6 @@
 extends Node
 
-signal cycle_start
+signal cycle_start(type)
 
 @export var calm_timer: Timer
 @export var storm_timer: Timer
@@ -9,14 +9,12 @@ signal cycle_start
 @onready var curr_cycle = "calm"
 
 func _on_calm_timer_timeout():
-	curr_cycle = "storm"
-	cycle_start.emit()
+	cycle_start.emit("storm")
 	print("calm ended")
 	storm_timer.start()
 
 func _on_storm_timer_timeout():
-	curr_cycle = "calm"
-	cycle_start.emit()
+	cycle_start.emit("calm")
 	print("storm ended")
 	calm_timer.start()
 
