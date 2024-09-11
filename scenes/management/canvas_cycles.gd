@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var _canvas_modulate: CanvasModulate
+@export var _anim: AnimationPlayer
 
 func _ready():
 	_canvas_modulate.color = Color("#6f8695") # initial Canvas color
@@ -11,6 +12,6 @@ func _ready():
 # mas nao ta funcionado 
 func _canvas_change(type):
 	if type == "calm":
-		print("vai mudar pra claro")
+		_anim.play("fade_in")
 	elif type == "storm":
-		print("vai mudar pra escuro")
+		_anim.play("fade_out")
