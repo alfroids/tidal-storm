@@ -5,9 +5,6 @@ signal cycle_start(type)
 @export var calm_timer: Timer
 @export var storm_timer: Timer
 
-@onready var previous_cycle = "calm"
-@onready var curr_cycle = "calm"
-
 func _on_calm_timer_timeout():
 	cycle_start.emit("storm")
 	print("calm ended")
