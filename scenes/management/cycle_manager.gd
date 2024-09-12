@@ -30,7 +30,7 @@ func _on_storm_timer_timeout() -> void:
 
 func delay_cycle_timer(delay: float) -> void:
 	if current_phase == PHASE.STORM:
-		storm_timer.start(storm_timer.time_left + delay)
+		storm_timer.start(maxf(0.0, storm_timer.time_left - delay))
 	elif current_phase == PHASE.CALM:
 		calm_timer.start(calm_timer.time_left + delay)
 	else:
