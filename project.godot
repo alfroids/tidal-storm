@@ -74,9 +74,10 @@ dash={
 
 [layer_names]
 
-2d_physics/layer_1="fish"
+2d_physics/layer_1="octopus"
 2d_physics/layer_2="hook"
 2d_physics/layer_3="environment"
+2d_physics/layer_4="item"
 
 [physics]
 

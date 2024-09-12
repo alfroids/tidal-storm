@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc3yj8ro8os7l"]
+[gd_scene load_steps=5 format=3 uid="uid://dc3yj8ro8os7l"]
 
 [ext_resource type="Script" path="res://scenes/mission/mission-manager/mission_manager.gd" id="1_g3jko"]
+[ext_resource type="PackedScene" uid="uid://ci57y7hqjh7xc" path="res://scenes/mission/mission-item/mission_item.tscn" id="2_rb4yy"]
+[ext_resource type="Script" path="res://scenes/mission/mission-item/mission_item_data.gd" id="3_ilfyh"]
+
+[sub_resource type="Resource" id="Resource_elkfw"]
+script = ExtResource("3_ilfyh")
+delay_time = 1.0
 
 [node name="MissionManager" type="Node"]
 script = ExtResource("1_g3jko")
+item_scene = ExtResource("2_rb4yy")
+item_datas = Array[ExtResource("3_ilfyh")]([SubResource("Resource_elkfw")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [node name="Items" type="Node" parent="."]
 

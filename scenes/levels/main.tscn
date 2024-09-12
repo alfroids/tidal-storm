@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://bu6f414k16ji4"]
 
-[ext_resource type="Script" path="res://scenes/levels/main.gd" id="1_4jlsr"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="4_t3ohp"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/lights/light_orb.tscn" id="7_3dddv"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/ui.tscn" id="8_du70m"]
+[ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
@@ -28,7 +28,6 @@ shader_parameter/movement_speed = 0.1
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_he17s")
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_4jlsr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -9420.0
@@ -92,5 +91,8 @@ position = Vector2(230, 749)
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 
 [node name="UI" parent="." instance=ExtResource("8_du70m")]
+
+[node name="MissionManager" parent="." instance=ExtResource("8_gtlp6")]
+spawn_area = Rect2(-1024, 0, 2048, 1024)
 
 [editable path="BoatManager"]
