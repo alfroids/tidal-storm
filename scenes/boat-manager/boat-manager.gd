@@ -29,7 +29,7 @@ func _on_cycle_started(phase: CycleManager.PHASE) -> void:
 	if phase == CycleManager.PHASE.CALM:
 		end_storm()
 	elif phase == CycleManager.PHASE.STORM:
-		start_storm(5)
+		start_storm(roundi(sqrt(CycleManager.cycle_count)))
 
 
 func move_and_throw_hook(boat: Boat) -> void:
