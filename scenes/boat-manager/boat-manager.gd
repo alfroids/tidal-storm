@@ -13,9 +13,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	start_storm(5)
-	await get_tree().create_timer(20.0).timeout
-	end_storm()
+	CycleManager.cycle_started.connect(_on_cycle_started)
 
 
 func spawn_boat() -> void:
@@ -25,6 +23,13 @@ func spawn_boat() -> void:
 	boat.pulled_hook.connect(move_and_throw_hook)
 	add_child(boat)
 	move_and_throw_hook(boat)
+
+
+func _on_cycle_started(phase: CycleManager.PHASE) -> void:
+	if phase == CycleManager.PHASE.CALM:
+		end_storm()
+	elif phase == CycleManager.PHASE.STORM:
+		start_storm(5)
 
 
 func move_and_throw_hook(boat: Boat) -> void:
