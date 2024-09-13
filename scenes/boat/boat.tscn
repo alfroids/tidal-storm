@@ -19,5 +19,10 @@ one_shot = true
 [node name="Hook" parent="." instance=ExtResource("4_es6nh")]
 position = Vector2(0, 45)
 
+[node name="FishingLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 5, 0, 5)
+width = 5.0
+default_color = Color(0.054902, 0.109804, 0.211765, 1)
+
 [connection signal="timeout" from="HookTimer" to="." method="pull_hook"]
 [connection signal="returned" from="Hook" to="." method="_on_hook_returned"]

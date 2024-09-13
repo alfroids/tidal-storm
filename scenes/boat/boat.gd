@@ -10,6 +10,11 @@ const SPEED: float = 200.0
 @onready var hook: Hook = $Hook as Hook
 @onready var hook_timer: Timer = $HookTimer as Timer
 @onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
+@onready var fishing_line: Line2D = $FishingLine as Line2D
+
+
+func _process(_delta: float) -> void:
+	fishing_line.points[-1] = hook.position - 40 * Vector2.DOWN
 
 
 func move_to(pos: Vector2) -> void:
