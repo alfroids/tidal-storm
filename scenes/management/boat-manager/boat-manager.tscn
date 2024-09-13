@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ye3rq14ioe58"]
 
-[ext_resource type="Script" path="res://scenes/boat-manager/boat-manager.gd" id="1_p4776"]
+[ext_resource type="Script" path="res://scenes/management/boat-manager/boat-manager.gd" id="1_p4776"]
 [ext_resource type="PackedScene" uid="uid://cgnkemcb2towe" path="res://scenes/boat/boat.tscn" id="2_1vqm6"]
 
 [sub_resource type="Curve2D" id="Curve2D_1ig5l"]

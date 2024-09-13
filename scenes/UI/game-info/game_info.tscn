@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkuab87kd4a46"]
 
-[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_3w24y"]
+[ext_resource type="Script" path="res://scenes/UI/game-info/game_info.gd" id="1_3w24y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvesj"]
 bg_color = Color(0.203922, 0.145098, 0.184314, 1)
@@ -16,12 +16,19 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("_progress_bar")]
+[node name="GameInfo" type="Control" node_paths=PackedStringArray("_progress_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3w24y")
 _progress_bar = NodePath("ProgressBar")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0

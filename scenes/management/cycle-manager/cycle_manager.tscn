@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnjbjiesepb0"]
 
-[ext_resource type="Script" path="res://scenes/management/cycle_manager.gd" id="1_1akce"]
+[ext_resource type="Script" path="res://scenes/management/cycle-manager/cycle_manager.gd" id="1_1akce"]
 
 [node name="CycleManager" type="Node" node_paths=PackedStringArray("calm_timer", "storm_timer")]
 script = ExtResource("1_1akce")
