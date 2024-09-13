@@ -11,9 +11,11 @@ extends Control
 
 func _process(_delta):
 	if CycleManager.current_phase == CycleManager.PHASE.CALM:
-		_progress_bar.get_theme_stylebox("fill").bg_color = Color("#539987")
-		_progress_bar.value = (calm_timer.time_left / calm_max_value) * 100
+		var percentage: float = calm_timer.time_left / calm_max_value
+		var color: Color = Color("#3b5249").lerp(Color("#8c1c13"), 1 - percentage)
+		_progress_bar.get_theme_stylebox("fill").bg_color = color
+		_progress_bar.value = 100 * percentage
 
 	if CycleManager.current_phase == CycleManager.PHASE.STORM:
-		_progress_bar.get_theme_stylebox("fill").bg_color = Color("#a30b37")
+		_progress_bar.get_theme_stylebox("fill").bg_color = Color("#6f8695")
 		_progress_bar.value = (1 - storm_timer.time_left / storm_max_value) * 100
