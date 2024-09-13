@@ -12,4 +12,5 @@ func _ready() -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	CycleManager.delay_cycle_timer(data.delay_time)
+	Data.items_caught += 1
 	queue_free()

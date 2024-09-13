@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 CycleManager="*res://scenes/management/cycle-manager/cycle_manager.tscn"
 SignalBus="*res://globals/signal_bus.gd"
+Data="*res://globals/data.gd"
 
 [display]
 

@@ -14,6 +14,7 @@ func _on_player_was_hooked() -> void:
 func _on_play_again_button_pressed() -> void:
 	get_tree().paused = false
 	CycleManager.start_cycles()
+	Data.reset_data()
 	get_tree().reload_current_scene()
 
 

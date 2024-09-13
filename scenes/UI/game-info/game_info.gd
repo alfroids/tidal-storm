@@ -2,6 +2,7 @@ extends Control
 
 
 @export var _progress_bar: ProgressBar
+@export var _cycle_label: Label
 
 @onready var calm_timer = CycleManager.calm_timer
 @onready var storm_timer = CycleManager.storm_timer
@@ -10,6 +11,8 @@ extends Control
 
 
 func _process(_delta):
+	_cycle_label.text = "Cycle " + str(CycleManager.cycle_count)
+
 	if CycleManager.current_phase == CycleManager.PHASE.CALM:
 		var percentage: float = calm_timer.time_left / calm_max_value
 		var color: Color = Color("#3b5249").lerp(Color("#8c1c13"), 1 - percentage)
