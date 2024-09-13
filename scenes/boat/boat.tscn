@@ -8,7 +8,7 @@
 script = ExtResource("3_u6p7u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -15)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_keu2m")
 
@@ -17,7 +17,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Hook" parent="." instance=ExtResource("4_es6nh")]
-position = Vector2(0, 40)
+position = Vector2(0, 45)
 
 [connection signal="timeout" from="HookTimer" to="." method="pull_hook"]
 [connection signal="returned" from="Hook" to="." method="_on_hook_returned"]

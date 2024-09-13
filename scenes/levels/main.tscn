@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=10 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/vfx/lights/light_orb.tscn" id="7_3dddv"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/game-info/game_info.tscn" id="8_du70m"]
+[ext_resource type="PackedScene" uid="uid://bbklaux7uduqr" path="res://scenes/UI/pause-menu/pause_menu.tscn" id="8_fuxxj"]
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
 
@@ -81,5 +82,7 @@ position = Vector2(230, 749)
 layer = 2
 
 [node name="GameInfo" parent="UI" instance=ExtResource("8_du70m")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
 
 [editable path="BoatManager"]

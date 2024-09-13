@@ -9,6 +9,7 @@ const SPEED: float = 400.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D as CollisionShape2D
 @onready var armed: bool = false
+@onready var idle_position: Vector2 = position
 
 
 func _ready() -> void:
@@ -39,7 +40,7 @@ func pull() -> void:
 	tween.tween_property(
 		self,
 		^"position",
-		Vector2.ZERO,
+		idle_position,
 		position.y / SPEED,
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	await tween.finished
@@ -48,4 +49,5 @@ func pull() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	SignalBus.player_was_hooked.emit()
 	pull()
