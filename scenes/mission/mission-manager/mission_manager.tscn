@@ -14,7 +14,7 @@ item_scene = ExtResource("2_rb4yy")
 item_datas = Array[ExtResource("3_ilfyh")]([SubResource("Resource_elkfw")])
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 autostart = true
 
 [node name="Items" type="Node" parent="."]
