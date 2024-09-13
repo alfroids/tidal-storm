@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
-[ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://fp5sxpywjdv3" path="res://scenes/management/light_manager.tscn" id="6_rn8rj"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/game-info/game_info.tscn" id="8_du70m"]
@@ -94,26 +93,6 @@ damping_max = 5.0
 [node name="MissionManager" parent="." instance=ExtResource("8_gtlp6")]
 max_items = 10
 spawn_area = Rect2(-1600, 100, 3200, 800)
-
-[node name="Lights" type="Node" parent="."]
-
-[node name="Sunlight" type="DirectionalLight2D" parent="Lights"]
-visible = false
-rotation = -0.436332
-color = Color(0.746009, 0.606846, 0.441028, 0.776471)
-shadow_enabled = true
-
-[node name="GodRayRight" type="PointLight2D" parent="Lights"]
-visible = false
-position = Vector2(1126, 168)
-scale = Vector2(9.64, 16.6)
-texture = ExtResource("4_l32tu")
-
-[node name="GodRayLeft" type="PointLight2D" parent="Lights"]
-visible = false
-position = Vector2(-1811, 633)
-scale = Vector2(8.12, 10.76)
-texture = ExtResource("4_l32tu")
 
 [node name="LightManager" parent="." instance=ExtResource("6_rn8rj")]
 position = Vector2(-1920, 0)

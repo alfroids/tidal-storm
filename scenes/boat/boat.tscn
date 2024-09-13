@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgnkemcb2towe"]
+[gd_scene load_steps=6 format=3 uid="uid://cgnkemcb2towe"]
 
 [ext_resource type="Texture2D" uid="uid://dpusjoasbhjsr" path="res://assets/sprites/boat.png" id="2_keu2m"]
 [ext_resource type="Script" path="res://scenes/boat/boat.gd" id="3_u6p7u"]
+[ext_resource type="Texture2D" uid="uid://vlxh3fhan7s1" path="res://assets/lights/lantern light 2.png" id="4_d7rlr"]
 [ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="4_es6nh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wj0cy"]
@@ -29,6 +30,11 @@ default_color = Color(0.054902, 0.109804, 0.211765, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_wj0cy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.710342, 0.106139, 0.0934437, 1)
+energy = 0.5
+texture = ExtResource("4_d7rlr")
 
 [connection signal="timeout" from="HookTimer" to="." method="pull_hook"]
 [connection signal="returned" from="Hook" to="." method="_on_hook_returned"]
