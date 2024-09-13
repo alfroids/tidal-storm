@@ -8,8 +8,8 @@ func _ready() -> void:
 func _orb_energy_change(phase: CycleManager.PHASE) -> void:
 	if phase == CycleManager.PHASE.CALM:
 		var tween = get_tree().create_tween()
-		tween.tween_property(_orb_light, "energy", 0, 1)
+		tween.tween_property(_orb_light, "energy", 0, 2)
 		
 	elif phase == CycleManager.PHASE.STORM:
 		var tween = get_tree().create_tween()
-		tween.tween_property(_orb_light, "energy", 2, 1)
+		tween.tween_property(_orb_light, "energy", 2, 2).set_trans(Tween.TRANS_BOUNCE)
