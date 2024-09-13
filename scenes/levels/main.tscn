@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
+[ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/vfx/lights/light_orb.tscn" id="7_3dddv"]
@@ -90,5 +91,10 @@ layer = 2
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
 
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_id7vp")]
+layer = 3
+offset = Vector2(-1920, 0)
+transform = Transform2D(1, 0, 0, 1, -1920, 0)
 
 [editable path="BoatManager"]
