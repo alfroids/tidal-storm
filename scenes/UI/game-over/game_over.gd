@@ -1,6 +1,10 @@
 extends Control
 
 
+@onready var items_collected_label: Label = %ItemsCollectedLabel as Label
+@onready var total_time_label: Label = %TotalTimeLabel as Label
+
+
 func _ready() -> void:
 	visible = false
 	SignalBus.player_was_hooked.connect(_on_player_was_hooked)
@@ -8,6 +12,10 @@ func _ready() -> void:
 
 func _on_player_was_hooked() -> void:
 	get_tree().paused = true
+
+	items_collected_label.text = "You collected " + str(Data.items_caught) + " items!"
+	total_time_label.text = "You survived for " + str((Time.get_ticks_msec() - Data.match_start_time) / 1000) + " seconds!"
+
 	visible = true
 
 
