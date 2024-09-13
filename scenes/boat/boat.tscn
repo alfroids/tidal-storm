@@ -1,27 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgnkemcb2towe"]
+[gd_scene load_steps=4 format=3 uid="uid://cgnkemcb2towe"]
 
-[ext_resource type="Shader" uid="uid://clqjl3sufgdba" path="res://assets/shaders/recolor.tres" id="1_7yvaq"]
-[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_ka30x"]
+[ext_resource type="Texture2D" uid="uid://cht6ha3tv5o5o" path="res://assets/sprites/boat.png" id="2_keu2m"]
 [ext_resource type="Script" path="res://scenes/boat/boat.gd" id="3_u6p7u"]
 [ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="4_es6nh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7i5e"]
-shader = ExtResource("1_7yvaq")
-shader_parameter/NewColor = Color(0.882353, 0.341176, 0.105882, 1)
 
 [node name="Boat" type="Node2D" groups=["boats"]]
 script = ExtResource("3_u6p7u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_e7i5e")
-position = Vector2(0, -64)
-texture = ExtResource("2_ka30x")
+position = Vector2(0, -20)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_keu2m")
 
 [node name="HookTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="Hook" parent="." instance=ExtResource("4_es6nh")]
+position = Vector2(0, 40)
 
 [connection signal="timeout" from="HookTimer" to="." method="pull_hook"]
 [connection signal="returned" from="Hook" to="." method="_on_hook_returned"]

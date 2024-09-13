@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d13gyrmtdht4u" path="res://assets/sprites/bubble.png" id="8_tpe6r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1ik8"]
-radius = 48.6621
+radius = 32.0
 
 [sub_resource type="Animation" id="Animation_80m3o"]
 length = 0.001
@@ -125,6 +125,7 @@ dash_state = NodePath("../Dash")
 
 [node name="Dash" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("6_tafg8")
+dash_speed = 1000.0
 move_state = NodePath("../Move")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

@@ -9,12 +9,15 @@ const SPEED: float = 200.0
 
 @onready var hook: Hook = $Hook as Hook
 @onready var hook_timer: Timer = $HookTimer as Timer
+@onready var sprite_2d: Sprite2D = $Sprite2D as Sprite2D
 
 
 func move_to(pos: Vector2) -> void:
 	if hook.armed:
 		pull_hook()
 		await hook.returned
+
+	sprite_2d.flip_h = (global_position.direction_to(pos) == Vector2.LEFT)
 
 	var tween: Tween = create_tween()
 	tween.tween_property(
