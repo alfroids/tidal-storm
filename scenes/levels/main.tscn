@@ -54,6 +54,9 @@ spawn_area = Rect2(-1920, 0, 3840, 1080)
 [node name="Lights" type="Node" parent="."]
 
 [node name="Sunlight" type="DirectionalLight2D" parent="Lights"]
+rotation = -0.436332
+color = Color(0.746009, 0.606846, 0.441028, 0.776471)
+shadow_enabled = true
 
 [node name="GodRayRight" type="PointLight2D" parent="Lights"]
 position = Vector2(1126, 168)
