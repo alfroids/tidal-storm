@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
-[ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/vfx/lights/light_orb.tscn" id="7_3dddv"]
+[ext_resource type="PackedScene" uid="uid://fp5sxpywjdv3" path="res://scenes/management/light_manager.tscn" id="6_rn8rj"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/game-info/game_info.tscn" id="8_du70m"]
 [ext_resource type="PackedScene" uid="uid://bbklaux7uduqr" path="res://scenes/UI/pause-menu/pause_menu.tscn" id="8_fuxxj"]
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
@@ -69,31 +69,25 @@ spawn_area = Rect2(-1920, 0, 3840, 1080)
 [node name="Lights" type="Node" parent="."]
 
 [node name="Sunlight" type="DirectionalLight2D" parent="Lights"]
+visible = false
 rotation = -0.436332
 color = Color(0.746009, 0.606846, 0.441028, 0.776471)
 shadow_enabled = true
 
 [node name="GodRayRight" type="PointLight2D" parent="Lights"]
+visible = false
 position = Vector2(1126, 168)
 scale = Vector2(9.64, 16.6)
 texture = ExtResource("4_l32tu")
 
 [node name="GodRayLeft" type="PointLight2D" parent="Lights"]
+visible = false
 position = Vector2(-1811, 633)
 scale = Vector2(8.12, 10.76)
 texture = ExtResource("4_l32tu")
 
-[node name="LightOrb1" parent="Lights" instance=ExtResource("7_3dddv")]
-position = Vector2(-350, 461)
-
-[node name="LightOrb2" parent="Lights" instance=ExtResource("7_3dddv")]
-position = Vector2(-882, 408)
-
-[node name="LightOrb3" parent="Lights" instance=ExtResource("7_3dddv")]
-position = Vector2(1034, 648)
-
-[node name="LightOrb4" parent="Lights" instance=ExtResource("7_3dddv")]
-position = Vector2(230, 749)
+[node name="LightManager" parent="." instance=ExtResource("6_rn8rj")]
+position = Vector2(-1920, 0)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 

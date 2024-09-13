@@ -1,7 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://fp5sxpywjdv3"]
+[gd_scene load_steps=4 format=3 uid="uid://fp5sxpywjdv3"]
 
-[ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/lights/light_orb.tscn" id="1_fa6ml"]
+[ext_resource type="PackedScene" uid="uid://wqflljuyalmk" path="res://scenes/vfx/lights/light_orb.tscn" id="1_fa6ml"]
+[ext_resource type="Script" path="res://scenes/management/light_manager.gd" id="1_t3y2m"]
+[ext_resource type="PackedScene" uid="uid://ctm7xj5py6p0j" path="res://scenes/vfx/lights/god_ray.tscn" id="3_1vo4u"]
 
-[node name="LightManager" type="Node"]
+[node name="LightManager" type="Node2D" node_paths=PackedStringArray("_orb_manager")]
+script = ExtResource("1_t3y2m")
+_orb_manager = NodePath("OrbsManager")
 
-[node name="LightOrb" parent="." instance=ExtResource("1_fa6ml")]
+[node name="OrbsManager" type="Node2D" parent="."]
+visible = false
+
+[node name="LightOrb" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(1730, 701)
+
+[node name="LightOrb2" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(1193, 328)
+
+[node name="LightOrb3" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(415, 297)
+
+[node name="LightOrb4" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(790, 495)
+
+[node name="LightOrb5" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(1745, 281)
+
+[node name="LightOrb6" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(2185, 541)
+
+[node name="LightOrb7" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(2589, 185)
+
+[node name="LightOrb8" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(2881, 629)
+
+[node name="LightOrb9" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(3417, 433)
+
+[node name="LightOrb10" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(3105, 273)
+
+[node name="LightOrb11" parent="OrbsManager" instance=ExtResource("1_fa6ml")]
+position = Vector2(361, 601)
+
+[node name="GodRayManager" type="Node2D" parent="."]
+
+[node name="GodRay" parent="GodRayManager" instance=ExtResource("3_1vo4u")]
+position = Vector2(647, 326)
+scale = Vector2(3.20733, 4.66442)
+
+[node name="GodRay2" parent="GodRayManager" instance=ExtResource("3_1vo4u")]
+position = Vector2(2504, 199)
+scale = Vector2(2.64734, 3.73019)
+
+[node name="GodRay3" parent="GodRayManager" instance=ExtResource("3_1vo4u")]
+position = Vector2(3257, 326)
+scale = Vector2(3.64733, 5.70442)

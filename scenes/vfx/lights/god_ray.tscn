@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm7xj5py6p0j"]
+
+[ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="1_fv5u3"]
+[ext_resource type="Script" path="res://scenes/vfx/lights/god_ray.gd" id="1_hu62y"]
+
+[node name="GodRay" type="Node2D" node_paths=PackedStringArray("_godray_light")]
+script = ExtResource("1_hu62y")
+_godray_light = NodePath("PointLight2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("1_fv5u3")
