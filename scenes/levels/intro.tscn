@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DefinitionText:modulate")
+tracks/0/path = NodePath("BackgroundColor/MarginContainer/DefinitionText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ProverbText:modulate")
+tracks/1/path = NodePath("BackgroundColor/MarginContainer/ProverbText:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -64,7 +64,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DefinitionText:modulate")
+tracks/0/path = NodePath("BackgroundColor/MarginContainer/DefinitionText:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ProverbText:modulate")
+tracks/1/path = NodePath("BackgroundColor/MarginContainer/ProverbText:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -134,40 +134,35 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ProverbText" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColor"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -363.5
-offset_top = -348.0
-offset_right = 363.5
-offset_bottom = -271.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_5j7bw")
-theme_override_font_sizes/font_size = 98
-text = "The Calm before the Storm"
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 160
 
-[node name="DefinitionText" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -426.0
-offset_top = -51.5
-offset_right = 426.0
-offset_bottom = 51.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ProverbText" type="Label" parent="BackgroundColor/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_5j7bw")
+theme_override_font_sizes/font_size = 112
+text = "the Calm before the Storm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefinitionText" type="Label" parent="BackgroundColor/MarginContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_rtc5d")
-theme_override_font_sizes/font_size = 82
-text = " ”A period of peace before a disturbance or crisis;
-      an unnatural or false calm before a storm”"
+theme_override_font_sizes/font_size = 80
+text = "”A period of peace before a disturbance or crisis;
+an unnatural or false calm before a storm”"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
