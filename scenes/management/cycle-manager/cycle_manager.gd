@@ -15,6 +15,13 @@ enum PHASE {CALM, STORM}
 @onready var cycle_count: int = 1
 
 
+func start_cycles() -> void:
+	cycle_count = 1
+	storm_timer.stop()
+	calm_timer.start(calm_wait_time)
+	current_phase = PHASE.CALM
+
+
 func _on_calm_timer_timeout() -> void:
 	#print("calm ended")
 	storm_timer.start(storm_wait_time)
