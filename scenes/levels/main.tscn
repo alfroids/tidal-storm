@@ -83,18 +83,18 @@ position = Vector2(230, 749)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 
+[node name="ParallaxBackground" parent="." instance=ExtResource("3_id7vp")]
+layer = 3
+offset = Vector2(-1920, 0)
+transform = Transform2D(1, 0, 0, 1, -1920, 0)
+
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
 [node name="GameInfo" parent="UI" instance=ExtResource("8_du70m")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
 
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_id7vp")]
-layer = 3
-offset = Vector2(-1920, 0)
-transform = Transform2D(1, 0, 0, 1, -1920, 0)
 
 [editable path="BoatManager"]
