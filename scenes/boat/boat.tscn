@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgnkemcb2towe"]
 
-[ext_resource type="Texture2D" uid="uid://cht6ha3tv5o5o" path="res://assets/sprites/boat.png" id="2_keu2m"]
+[ext_resource type="Texture2D" uid="uid://dpusjoasbhjsr" path="res://assets/sprites/boat.png" id="2_keu2m"]
 [ext_resource type="Script" path="res://scenes/boat/boat.gd" id="3_u6p7u"]
 [ext_resource type="PackedScene" uid="uid://cf8a48cwri0kk" path="res://scenes/hook/hook.tscn" id="4_es6nh"]
 
