@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="Texture2D" uid="uid://du2vcjykuaqa7" path="res://assets/lights/light_ray.png" id="4_l32tu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bbklaux7uduqr" path="res://scenes/UI/pause-menu/pause_menu.tscn" id="8_fuxxj"]
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
+[ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
@@ -84,5 +85,7 @@ layer = 2
 [node name="GameInfo" parent="UI" instance=ExtResource("8_du70m")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
+
+[node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
 
 [editable path="BoatManager"]
