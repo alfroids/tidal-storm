@@ -133,19 +133,8 @@ rotation = 1.56517
 scale = Vector2(1.00045, 1.67977)
 texture = ExtResource("7_28um0")
 
-[node name="DustParticles" type="CPUParticles2D" parent="."]
-amount = 100
-lifetime = 4.0
-emission_shape = 3
-emission_rect_extents = Vector2(350, 350)
-direction = Vector2(1, -1)
-gravity = Vector2(0, 0)
-initial_velocity_min = 15.0
-initial_velocity_max = 25.0
-damping_min = 2.0
-damping_max = 5.0
-
 [node name="BubblesParticles" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(0, -3)
 amount = 5
 lifetime = 10.0
