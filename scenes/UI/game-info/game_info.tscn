@@ -53,6 +53,7 @@ show_percentage = false
 [node name="CycleLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.945098, 0.890196, 0.827451, 1)
 theme_override_fonts/font = ExtResource("2_dcw0k")
 theme_override_font_sizes/font_size = 42
 text = "Cycle 00"
