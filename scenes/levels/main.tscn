@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=16 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="Shader" path="res://assets/shaders/water2.gdshader" id="1_xfky2"]
 [ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_qw27i"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
-[ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
+[ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_foreground.tscn" id="3_id7vp"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://fp5sxpywjdv3" path="res://scenes/management/light_manager.tscn" id="6_rn8rj"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/game-info/game_info.tscn" id="8_du70m"]
 [ext_resource type="PackedScene" uid="uid://bbklaux7uduqr" path="res://scenes/UI/pause-menu/pause_menu.tscn" id="8_fuxxj"]
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
+[ext_resource type="PackedScene" uid="uid://cipnapuko7lk8" path="res://scenes/vfx/parallax/parallax_background.tscn" id="9_00ik2"]
 [ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
 [ext_resource type="PackedScene" uid="uid://cxsav4ums81sc" path="res://scenes/management/sound_manager.tscn" id="10_mh3bh"]
 
@@ -25,18 +26,13 @@ normal = Vector2(0, 1)
 [node name="Main" type="Node2D"]
 
 [node name="WaterShader" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_liykp")
 position = Vector2(0, 540)
 texture = ExtResource("2_qw27i")
 region_enabled = true
 region_rect = Rect2(-1920, 0, 3840, 1080)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1920.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.219608, 0.223529, 0.380392, 1)
 
 [node name="WaterSurface" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -93,9 +89,6 @@ position = Vector2(-2176, 0)
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
 position = Vector2(2176, 0)
 
-[node name="MoveLocation" parent="BoatManager/MovePath" index="0"]
-position = Vector2(-1856, 0)
-
 [node name="ParticleManager" type="Node" parent="."]
 
 [node name="DustParticles" type="CPUParticles2D" parent="ParticleManager"]
@@ -119,10 +112,21 @@ position = Vector2(-1920, 0)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("3_id7vp")]
-layer = 3
+[node name="ParallaxForeground" parent="." instance=ExtResource("3_id7vp")]
 offset = Vector2(-4038, 0)
 transform = Transform2D(1, 0, 0, 1, -4038, 0)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_00ik2")]
+
+[node name="WaterBackground" type="CanvasLayer" parent="."]
+layer = -2
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="WaterBackground"]
+offset_left = -1920.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.219608, 0.223529, 0.380392, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10
