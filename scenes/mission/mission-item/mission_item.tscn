@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci57y7hqjh7xc"]
 
 [ext_resource type="Script" path="res://scenes/mission/mission-item/mission_item.gd" id="1_f5xod"]
-[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="1_nvcve"]
 [ext_resource type="Script" path="res://scenes/mission/mission-item/mission_item_data.gd" id="2_kaeeq"]
+[ext_resource type="Texture2D" uid="uid://5hjutr884koo" path="res://assets/sprites/item.png" id="3_iscxw"]
 [ext_resource type="Texture2D" uid="uid://vlxh3fhan7s1" path="res://assets/lights/lantern light 2.png" id="4_hmkol"]
 
 [sub_resource type="Resource" id="Resource_h47vo"]
@@ -10,7 +10,7 @@ script = ExtResource("2_kaeeq")
 delay_time = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7md4x"]
-radius = 16.0
+radius = 31.0
 
 [node name="MissionItem" type="Area2D"]
 collision_layer = 8
@@ -18,10 +18,11 @@ script = ExtResource("1_f5xod")
 data = SubResource("Resource_h47vo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_nvcve")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_iscxw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
 shape = SubResource("CircleShape2D_7md4x")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
