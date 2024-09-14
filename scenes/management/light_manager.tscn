@@ -8,6 +8,7 @@
 script = ExtResource("1_t3y2m")
 _sunlight = NodePath("SunLight")
 light_scene = ExtResource("1_fa6ml")
+num_lights = 5
 
 [node name="SunLight" type="DirectionalLight2D" parent="."]
 rotation = 0.436332

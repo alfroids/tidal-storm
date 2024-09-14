@@ -131,7 +131,9 @@ move_state = NodePath("../Move")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 rotation = 1.56517
 scale = Vector2(1.00045, 1.67977)
+energy = 0.7
 texture = ExtResource("7_28um0")
+texture_scale = 3.0
 
 [node name="BubblesParticles" type="CPUParticles2D" parent="."]
 visible = false

@@ -3,7 +3,7 @@ extends Node2D
 @export var _godray_light: PointLight2D
 
 func _ready() -> void:
-	CycleManager.cycle_started.connect(_godray_energy_change) # aqui eu pego o sinal emitido pelo autoload?
+	CycleManager.cycle_started.connect(_godray_energy_change) 
 
 func _godray_energy_change(phase: CycleManager.PHASE) -> void:
 	if phase == CycleManager.PHASE.CALM:
