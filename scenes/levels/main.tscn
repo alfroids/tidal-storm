@@ -79,10 +79,6 @@ spawn_area = Rect2(-1600, 100, 3200, 800)
 [node name="ParallaxForeground" parent="." instance=ExtResource("3_id7vp")]
 scroll_offset = Vector2(-960, 540)
 
-[node name="WaterShader" type="Polygon2D" parent="."]
-material = SubResource("ShaderMaterial_24hk8")
-polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
-
 [node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
 min_hook_depth = 200.0
 max_hook_depth = 1050.0
@@ -92,6 +88,10 @@ position = Vector2(-2176, 0)
 
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
 position = Vector2(2176, 0)
+
+[node name="WaterShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_24hk8")
+polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
 
 [node name="Collisions" type="Node" parent="."]
 
