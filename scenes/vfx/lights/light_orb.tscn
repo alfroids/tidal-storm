@@ -15,4 +15,4 @@ texture = ExtResource("1_keutm")
 color = Color(0.32549, 0.6, 0.529412, 1)
 energy = 0.7
 texture = ExtResource("2_cy1qu")
-texture_scale = 3.0
+texture_scale = 4.0
