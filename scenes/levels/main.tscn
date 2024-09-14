@@ -95,7 +95,6 @@ max_items = 10
 spawn_area = Rect2(-1600, 100, 3200, 800)
 
 [node name="LightManager" parent="." instance=ExtResource("6_rn8rj")]
-visible = false
 position = Vector2(-1920, 0)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
