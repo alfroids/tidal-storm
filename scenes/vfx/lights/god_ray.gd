@@ -8,7 +8,7 @@ func _ready() -> void:
 func _godray_energy_change(phase: CycleManager.PHASE) -> void:
 	if phase == CycleManager.PHASE.CALM:
 		var tween = get_tree().create_tween()
-		tween.tween_property(_godray_light, "energy", 1.5, 3).set_trans(Tween.TRANS_BOUNCE)
+		tween.tween_property(_godray_light, "energy", 0.8, 3).set_trans(Tween.TRANS_BOUNCE)
 
 	elif phase == CycleManager.PHASE.STORM:
 		var tween = get_tree().create_tween()
