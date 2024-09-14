@@ -33,8 +33,9 @@ occluder = SubResource("OccluderPolygon2D_wj0cy")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.710342, 0.106139, 0.0934437, 1)
-energy = 0.5
+energy = 0.7
 texture = ExtResource("4_d7rlr")
+texture_scale = 1.2
 
 [connection signal="timeout" from="HookTimer" to="." method="pull_hook"]
 [connection signal="returned" from="Hook" to="." method="_on_hook_returned"]

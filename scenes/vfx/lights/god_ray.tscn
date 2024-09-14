@@ -8,4 +8,5 @@ script = ExtResource("1_hu62y")
 _godray_light = NodePath("PointLight2D")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.5
 texture = ExtResource("1_fv5u3")

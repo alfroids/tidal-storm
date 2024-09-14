@@ -12,4 +12,4 @@ func _orb_energy_change(phase: CycleManager.PHASE) -> void:
 		
 	elif phase == CycleManager.PHASE.STORM:
 		var tween = get_tree().create_tween()
-		tween.tween_property(_orb_light, "energy", 2, 2).set_trans(Tween.TRANS_BOUNCE)
+		tween.tween_property(_orb_light, "energy", 1, 2)
