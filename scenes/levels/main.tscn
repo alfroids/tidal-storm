@@ -58,7 +58,7 @@ position = Vector2(-1920, 0)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 
-[node name="ParticleManager" type="Node" parent="."]
+[node name="ParticleManager" type="Node2D" parent="."]
 
 [node name="DustParticles" type="CPUParticles2D" parent="ParticleManager"]
 amount = 1000
@@ -84,7 +84,8 @@ material = SubResource("ShaderMaterial_24hk8")
 polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
 
 [node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
-max_hook_depth = 900.0
+min_hook_depth = 200.0
+max_hook_depth = 1050.0
 
 [node name="SpawnLocation1" parent="BoatManager" index="0"]
 position = Vector2(-2176, 0)

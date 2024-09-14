@@ -8,7 +8,7 @@
 script = ExtResource("3_ilfyh")
 delay_time = 1.0
 
-[node name="MissionManager" type="Node"]
+[node name="MissionManager" type="Node2D"]
 script = ExtResource("1_g3jko")
 item_scene = ExtResource("2_rb4yy")
 item_datas = Array[ExtResource("3_ilfyh")]([SubResource("Resource_elkfw")])
@@ -17,6 +17,6 @@ item_datas = Array[ExtResource("3_ilfyh")]([SubResource("Resource_elkfw")])
 wait_time = 2.5
 autostart = true
 
-[node name="Items" type="Node" parent="."]
+[node name="Items" type="Node2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
