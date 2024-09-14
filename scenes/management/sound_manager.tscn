@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxsav4ums81sc"]
+
+[ext_resource type="Script" path="res://scenes/management/sound_manager.gd" id="1_32785"]
+[ext_resource type="AudioStream" uid="uid://6thn5s623toy" path="res://assets/sfx/music/Cleyton RX - Underwater.wav" id="2_lt2ub"]
+[ext_resource type="AudioStream" uid="uid://btl5lj25sffgo" path="res://assets/sfx/music/Eye of the Storm.wav" id="3_ccd3u"]
+
+[node name="SoundManager" type="Node" node_paths=PackedStringArray("_calm_music", "_storm_music")]
+script = ExtResource("1_32785")
+_calm_music = NodePath("CalmMusic")
+_storm_music = NodePath("StormMusic")
+
+[node name="CalmMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_lt2ub")
+
+[node name="StormMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ccd3u")

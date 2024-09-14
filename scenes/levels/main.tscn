@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
 
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
 [ext_resource type="PackedScene" uid="uid://kuj350nl7omh" path="res://scenes/management/canvas_cycles.tscn" id="8_jit2o"]
 [ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
+[ext_resource type="PackedScene" uid="uid://cxsav4ums81sc" path="res://scenes/management/sound_manager.tscn" id="10_mh3bh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
@@ -112,5 +113,7 @@ layer = 10
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
 
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
+
+[node name="SoundManager" parent="." instance=ExtResource("10_mh3bh")]
 
 [editable path="BoatManager"]
