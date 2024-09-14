@@ -2,13 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bwwclond74du2" path="res://assets/sprites/fg_parallax_longer_final.png" id="1_ooc1f"]
 
-[node name="ParallaxForeground" type="ParallaxBackground"]
-layer = 1
+[node name="ParallaxForeground" type="Parallax2D"]
+scroll_scale = Vector2(2, 2)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(2, 2)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_ooc1f")
-centered = false

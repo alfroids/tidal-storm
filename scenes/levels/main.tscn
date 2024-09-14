@@ -13,9 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
 [ext_resource type="PackedScene" uid="uid://cxsav4ums81sc" path="res://scenes/management/sound_manager.tscn" id="10_mh3bh"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
-normal = Vector2(0, 1)
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xoo0d"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_urnya"]
@@ -30,7 +27,70 @@ shader_parameter/movement_direction = Vector2(1, 0)
 shader_parameter/movement_speed = 0.2
 shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_urnya")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
+normal = Vector2(0, 1)
+
 [node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1920.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.219608, 0.223529, 0.380392, 1)
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_00ik2")]
+scroll_offset = Vector2(-960, 540)
+
+[node name="Octopus" parent="." instance=ExtResource("3_eg6kt")]
+position = Vector2(0, 384)
+
+[node name="Camera2D" type="Camera2D" parent="Octopus"]
+process_callback = 0
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="LightManager" parent="." instance=ExtResource("6_rn8rj")]
+position = Vector2(-1920, 0)
+
+[node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
+
+[node name="ParticleManager" type="Node" parent="."]
+
+[node name="DustParticles" type="CPUParticles2D" parent="ParticleManager"]
+amount = 1000
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(3840, 1000)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+damping_min = 2.0
+damping_max = 5.0
+
+[node name="MissionManager" parent="." instance=ExtResource("8_gtlp6")]
+max_items = 10
+spawn_area = Rect2(-1600, 100, 3200, 800)
+
+[node name="ParallaxForeground" parent="." instance=ExtResource("3_id7vp")]
+scroll_offset = Vector2(-960, 540)
+
+[node name="WaterShader" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_24hk8")
+polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
+
+[node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
+max_hook_depth = 900.0
+
+[node name="SpawnLocation1" parent="BoatManager" index="0"]
+position = Vector2(-2176, 0)
+
+[node name="SpawnLocation2" parent="BoatManager" index="1"]
+position = Vector2(2176, 0)
 
 [node name="Collisions" type="Node" parent="."]
 
@@ -68,43 +128,7 @@ collision_mask = 0
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
-[node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
-max_hook_depth = 900.0
-
-[node name="SpawnLocation1" parent="BoatManager" index="0"]
-position = Vector2(-2176, 0)
-
-[node name="SpawnLocation2" parent="BoatManager" index="1"]
-position = Vector2(2176, 0)
-
-[node name="MissionManager" parent="." instance=ExtResource("8_gtlp6")]
-max_items = 10
-spawn_area = Rect2(-1600, 100, 3200, 800)
-
 [node name="SoundManager" parent="." instance=ExtResource("10_mh3bh")]
-
-[node name="ParallaxForeground" parent="." instance=ExtResource("3_id7vp")]
-offset = Vector2(-4038, 0)
-transform = Transform2D(1, 0, 0, 1, -4038, 0)
-
-[node name="ParallaxBackground" parent="." instance=ExtResource("9_00ik2")]
-
-[node name="WaterBackground" type="CanvasLayer" parent="."]
-layer = -2
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="WaterBackground"]
-offset_left = -1920.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.219608, 0.223529, 0.380392, 1)
-
-[node name="Shader" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="WaterShader" type="Polygon2D" parent="Shader"]
-material = SubResource("ShaderMaterial_24hk8")
-polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10
@@ -114,40 +138,5 @@ layer = 10
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_fuxxj")]
 
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
-
-[node name="Zero" type="CanvasLayer" parent="."]
-layer = 0
-follow_viewport_enabled = true
-
-[node name="CanvasCycles" parent="Zero" instance=ExtResource("8_jit2o")]
-
-[node name="ParticleManager" type="Node" parent="Zero"]
-
-[node name="DustParticles" type="CPUParticles2D" parent="Zero/ParticleManager"]
-amount = 1000
-lifetime = 4.0
-emission_shape = 3
-emission_rect_extents = Vector2(3840, 1000)
-direction = Vector2(1, -1)
-gravity = Vector2(0, 0)
-initial_velocity_min = 15.0
-initial_velocity_max = 25.0
-damping_min = 2.0
-damping_max = 5.0
-
-[node name="Octopus" parent="Zero" instance=ExtResource("3_eg6kt")]
-position = Vector2(0, 384)
-
-[node name="Camera2D" type="Camera2D" parent="Zero/Octopus"]
-process_callback = 0
-limit_left = -1920
-limit_top = -1080
-limit_right = 1920
-limit_bottom = 1080
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
-
-[node name="LightManager" parent="Zero" instance=ExtResource("6_rn8rj")]
-position = Vector2(-1920, 0)
 
 [editable path="BoatManager"]

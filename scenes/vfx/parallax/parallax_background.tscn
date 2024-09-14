@@ -2,15 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dfv6xkb73gkxt" path="res://assets/sprites/bg_parallax.png" id="1_sm60l"]
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
-layer = -1
+[node name="ParallaxBackground" type="Parallax2D"]
+scroll_scale = Vector2(0.5, 0.5)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-position = Vector2(0, 64)
-motion_scale = Vector2(0.5, 0.5)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
-position = Vector2(-3976, 64)
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_sm60l")
-centered = false
