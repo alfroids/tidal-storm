@@ -14,7 +14,7 @@ func _on_player_was_hooked() -> void:
 	get_tree().paused = true
 
 	items_collected_label.text = "You collected " + str(Data.items_caught) + " items!"
-	total_time_label.text = "You survived for " + str((Time.get_ticks_msec() - Data.match_start_time) / 1000) + " seconds!"
+	total_time_label.text = "You survived for " + str(roundi((Time.get_ticks_msec() - Data.match_start_time) / 1000)) + " seconds!"
 
 	visible = true
 
