@@ -5,6 +5,8 @@ extends State
 @export var dash_state: State
 
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer" as AnimationPlayer
+@onready var tutorial_timer: Timer = $TutorialTimer as Timer
+@onready var tutorial: Sprite2D = $"../../Tutorial" as Sprite2D
 
 
 ## Called when this State is being activated.
@@ -12,11 +14,14 @@ func enter(_msg: Dictionary = {}) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property($"../../Sprite2D", ^"rotation", 0.0, 0.1)
 	animation_player.play("idle")
+	tutorial.visible = false
+	tutorial_timer.start()
 
 
 ## Called when this State is being deactivated.
 func exit() -> void:
-	pass
+	tutorial.visible = false
+	tutorial_timer.stop()
 
 
 ## Intended to handle input events from its [class StateMachine].
@@ -42,3 +47,7 @@ func physics_update(_delta: float) -> void:
 	if move_dir:
 		change_state(move_state)
 		return
+
+
+func _on_tutorial_timer_timeout() -> void:
+	tutorial.visible = true

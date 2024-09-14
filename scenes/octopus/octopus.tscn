@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb21uipacresu"]
+[gd_scene load_steps=16 format=3 uid="uid://bb21uipacresu"]
 
 [ext_resource type="Script" path="res://scenes/octopus/octopus.gd" id="1_qo50e"]
 [ext_resource type="Texture2D" uid="uid://b5xpej7262eyn" path="res://assets/sprites/octopus_sprite_sheet.png" id="3_jijj6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scenes/octopus/states/dash_state.gd" id="6_tafg8"]
 [ext_resource type="Texture2D" uid="uid://vlxh3fhan7s1" path="res://assets/lights/lantern light 2.png" id="7_28um0"]
 [ext_resource type="Texture2D" uid="uid://d13gyrmtdht4u" path="res://assets/sprites/bubble.png" id="8_tpe6r"]
+[ext_resource type="Texture2D" uid="uid://bpixmldc6gmos" path="res://assets/sprites/tutorial_buttons.png" id="9_phlju"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1ik8"]
 radius = 32.0
@@ -118,6 +119,9 @@ script = ExtResource("4_0v1hu")
 move_state = NodePath("../Move")
 dash_state = NodePath("../Dash")
 
+[node name="TutorialTimer" type="Timer" parent="StateMachine/Idle"]
+wait_time = 5.0
+
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "dash_state")]
 script = ExtResource("5_ertig")
 idle_state = NodePath("../Idle")
@@ -149,3 +153,11 @@ initial_velocity_min = 30.0
 initial_velocity_max = 45.0
 damping_min = 2.0
 damping_max = 5.0
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -71)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("9_phlju")
+
+[connection signal="timeout" from="StateMachine/Idle/TutorialTimer" to="StateMachine/Idle" method="_on_tutorial_timer_timeout"]
