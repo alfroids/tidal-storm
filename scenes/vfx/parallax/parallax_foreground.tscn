@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://beu1a485bi78v"]
 
-[ext_resource type="Texture2D" uid="uid://bwwclond74du2" path="res://assets/sprites/fg_parallax_longer_final.png" id="1_ooc1f"]
+[ext_resource type="Texture2D" uid="uid://cjokuk7qcrghd" path="res://assets/sprites/fg_parallax_longer_final_de_verdade.png" id="1_64vjc"]
 
 [node name="ParallaxForeground" type="Parallax2D"]
 scroll_scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_ooc1f")
+texture = ExtResource("1_64vjc")
