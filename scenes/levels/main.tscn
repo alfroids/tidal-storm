@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=17 format=3 uid="uid://bu6f414k16ji4"]
 
-[ext_resource type="Shader" path="res://assets/shaders/water2.gdshader" id="1_xfky2"]
-[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_qw27i"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_foreground.tscn" id="3_id7vp"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
 [ext_resource type="PackedScene" uid="uid://fp5sxpywjdv3" path="res://scenes/management/light_manager.tscn" id="6_rn8rj"]
+[ext_resource type="Shader" path="res://assets/shaders/water1.gdshader" id="8_6mdet"]
 [ext_resource type="PackedScene" uid="uid://bkuab87kd4a46" path="res://scenes/UI/game-info/game_info.tscn" id="8_du70m"]
 [ext_resource type="PackedScene" uid="uid://bbklaux7uduqr" path="res://scenes/UI/pause-menu/pause_menu.tscn" id="8_fuxxj"]
 [ext_resource type="PackedScene" uid="uid://dc3yj8ro8os7l" path="res://scenes/mission/mission-manager/mission_manager.tscn" id="8_gtlp6"]
@@ -14,71 +13,60 @@
 [ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
 [ext_resource type="PackedScene" uid="uid://cxsav4ums81sc" path="res://scenes/management/sound_manager.tscn" id="10_mh3bh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_liykp"]
-shader = ExtResource("1_xfky2")
-shader_parameter/blue_tint = Color(0, 0, 0, 1)
-shader_parameter/sprite_scale = null
-shader_parameter/scale_x = 10.0
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xoo0d"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_urnya"]
+seamless = true
+noise = SubResource("FastNoiseLite_xoo0d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24hk8"]
+shader = ExtResource("8_6mdet")
+shader_parameter/strength = 4.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.2
+shader_parameter/NOISE_TEXTURE = SubResource("NoiseTexture2D_urnya")
+
 [node name="Main" type="Node2D"]
 
-[node name="WaterShader" type="Sprite2D" parent="."]
-visible = false
-z_index = 1
-material = SubResource("ShaderMaterial_liykp")
-position = Vector2(0, 540)
-texture = ExtResource("2_qw27i")
-region_enabled = true
-region_rect = Rect2(-1920, 0, 3840, 1080)
+[node name="Collisions" type="Node" parent="."]
 
-[node name="WaterSurface" type="StaticBody2D" parent="."]
+[node name="WaterSurface" type="StaticBody2D" parent="Collisions"]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterSurface"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/WaterSurface"]
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="Collisions"]
 position = Vector2(0, 1080)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Ground"]
 rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
-[node name="LeftBoundary" type="StaticBody2D" parent="."]
+[node name="LeftBoundary" type="StaticBody2D" parent="Collisions"]
 position = Vector2(-1920, 0)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/LeftBoundary"]
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_hixgo")
 
-[node name="RightBooundary" type="StaticBody2D" parent="."]
+[node name="RightBooundary" type="StaticBody2D" parent="Collisions"]
 position = Vector2(1920, 0)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBooundary"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/RightBooundary"]
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_hixgo")
-
-[node name="Octopus" parent="." instance=ExtResource("3_eg6kt")]
-position = Vector2(0, 384)
-
-[node name="Camera2D" type="Camera2D" parent="Octopus"]
-process_callback = 0
-limit_left = -1920
-limit_top = -1080
-limit_right = 1920
-limit_bottom = 1080
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
 
 [node name="BoatManager" parent="." instance=ExtResource("5_gj485")]
 max_hook_depth = 900.0
@@ -89,26 +77,9 @@ position = Vector2(-2176, 0)
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
 position = Vector2(2176, 0)
 
-[node name="ParticleManager" type="Node" parent="."]
-
-[node name="DustParticles" type="CPUParticles2D" parent="ParticleManager"]
-amount = 1000
-lifetime = 4.0
-emission_shape = 3
-emission_rect_extents = Vector2(3840, 1000)
-direction = Vector2(1, -1)
-gravity = Vector2(0, 0)
-initial_velocity_min = 15.0
-initial_velocity_max = 25.0
-damping_min = 2.0
-damping_max = 5.0
-
 [node name="MissionManager" parent="." instance=ExtResource("8_gtlp6")]
 max_items = 10
 spawn_area = Rect2(-1600, 100, 3200, 800)
-
-[node name="LightManager" parent="." instance=ExtResource("6_rn8rj")]
-position = Vector2(-1920, 0)
 
 [node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
 
@@ -128,6 +99,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0.219608, 0.223529, 0.380392, 1)
 
+[node name="Shader" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="WaterShader" type="Polygon2D" parent="Shader"]
+material = SubResource("ShaderMaterial_24hk8")
+polygon = PackedVector2Array(-1920, 0, 1920, 0, 1920, 1080, -1920, 1080)
+
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10
 
@@ -138,5 +116,38 @@ layer = 10
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
 
 [node name="SoundManager" parent="." instance=ExtResource("10_mh3bh")]
+
+[node name="Zero" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="LightManager" parent="Zero" instance=ExtResource("6_rn8rj")]
+position = Vector2(-1920, 0)
+
+[node name="ParticleManager" type="Node" parent="Zero"]
+
+[node name="DustParticles" type="CPUParticles2D" parent="Zero/ParticleManager"]
+amount = 1000
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(3840, 1000)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+damping_min = 2.0
+damping_max = 5.0
+
+[node name="Octopus" parent="Zero" instance=ExtResource("3_eg6kt")]
+position = Vector2(0, 384)
+
+[node name="Camera2D" type="Camera2D" parent="Zero/Octopus"]
+process_callback = 0
+limit_left = -1920
+limit_top = -1080
+limit_right = 1920
+limit_bottom = 1080
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [editable path="BoatManager"]
