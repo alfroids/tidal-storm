@@ -81,7 +81,7 @@ position = Vector2(2176, 0)
 max_items = 10
 spawn_area = Rect2(-1600, 100, 3200, 800)
 
-[node name="CanvasCycles" parent="." instance=ExtResource("8_jit2o")]
+[node name="SoundManager" parent="." instance=ExtResource("10_mh3bh")]
 
 [node name="ParallaxForeground" parent="." instance=ExtResource("3_id7vp")]
 offset = Vector2(-4038, 0)
@@ -115,14 +115,11 @@ layer = 10
 
 [node name="GameOver" parent="UI" instance=ExtResource("9_adtxi")]
 
-[node name="SoundManager" parent="." instance=ExtResource("10_mh3bh")]
-
 [node name="Zero" type="CanvasLayer" parent="."]
 layer = 0
 follow_viewport_enabled = true
 
-[node name="LightManager" parent="Zero" instance=ExtResource("6_rn8rj")]
-position = Vector2(-1920, 0)
+[node name="CanvasCycles" parent="Zero" instance=ExtResource("8_jit2o")]
 
 [node name="ParticleManager" type="Node" parent="Zero"]
 
@@ -149,5 +146,8 @@ limit_right = 1920
 limit_bottom = 1080
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="LightManager" parent="Zero" instance=ExtResource("6_rn8rj")]
+position = Vector2(-1920, 0)
 
 [editable path="BoatManager"]
