@@ -1,5 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu6f414k16ji4"]
+[gd_scene load_steps=15 format=3 uid="uid://bu6f414k16ji4"]
 
+[ext_resource type="Shader" path="res://assets/shaders/water2.gdshader" id="1_xfky2"]
+[ext_resource type="Texture2D" uid="uid://dc2g5hdov4cvd" path="res://assets/icon.svg" id="2_qw27i"]
 [ext_resource type="PackedScene" uid="uid://bb21uipacresu" path="res://scenes/octopus/octopus.tscn" id="3_eg6kt"]
 [ext_resource type="PackedScene" uid="uid://beu1a485bi78v" path="res://scenes/vfx/parallax/parallax_background.tscn" id="3_id7vp"]
 [ext_resource type="PackedScene" uid="uid://ye3rq14ioe58" path="res://scenes/management/boat-manager/boat-manager.tscn" id="5_gj485"]
@@ -11,10 +13,24 @@
 [ext_resource type="PackedScene" uid="uid://b1abhynprhr0v" path="res://scenes/UI/game-over/game_over.tscn" id="9_adtxi"]
 [ext_resource type="PackedScene" uid="uid://cxsav4ums81sc" path="res://scenes/management/sound_manager.tscn" id="10_mh3bh"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_liykp"]
+shader = ExtResource("1_xfky2")
+shader_parameter/blue_tint = Color(0, 0, 0, 1)
+shader_parameter/sprite_scale = null
+shader_parameter/scale_x = 10.0
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hixgo"]
 normal = Vector2(0, 1)
 
 [node name="Main" type="Node2D"]
+
+[node name="WaterShader" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_liykp")
+position = Vector2(0, 540)
+texture = ExtResource("2_qw27i")
+region_enabled = true
+region_rect = Rect2(-1920, 0, 3840, 1080)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -1920.0
@@ -72,10 +88,13 @@ position_smoothing_speed = 2.0
 max_hook_depth = 900.0
 
 [node name="SpawnLocation1" parent="BoatManager" index="0"]
-position = Vector2(-960, 0)
+position = Vector2(-2176, 0)
 
 [node name="SpawnLocation2" parent="BoatManager" index="1"]
-position = Vector2(960, 0)
+position = Vector2(2176, 0)
+
+[node name="MoveLocation" parent="BoatManager/MovePath" index="0"]
+position = Vector2(-1856, 0)
 
 [node name="ParticleManager" type="Node" parent="."]
 

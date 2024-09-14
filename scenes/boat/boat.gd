@@ -5,7 +5,7 @@ extends Node2D
 signal reached_target_position()
 signal pulled_hook(boat: Boat)
 
-const SPEED: float = 200.0
+const SPEED: float = 600.0
 
 @onready var hook: Hook = $Hook as Hook
 @onready var hook_timer: Timer = $HookTimer as Timer

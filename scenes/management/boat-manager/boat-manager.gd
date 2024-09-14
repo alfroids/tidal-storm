@@ -49,11 +49,13 @@ func move_and_queue_free(boat: Boat) -> void:
 
 func start_storm(num_boats: int) -> void:
 	for _i in range(num_boats):
+		if CycleManager.current_phase == CycleManager.PHASE.CALM:
+			break
 		spawn_boat()
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.2).timeout
 
 
 func end_storm() -> void:
 	for boat: Boat in get_tree().get_nodes_in_group(&"boats"):
 		move_and_queue_free(boat)
-		await get_tree().create_timer(1.0).timeout
+		#await get_tree().create_timer(0.2).timeout

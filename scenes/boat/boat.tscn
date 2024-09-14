@@ -17,7 +17,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_keu2m")
 
 [node name="HookTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 one_shot = true
 
 [node name="Hook" parent="." instance=ExtResource("4_es6nh")]

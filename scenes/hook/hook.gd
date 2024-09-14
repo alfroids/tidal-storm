@@ -5,7 +5,7 @@ extends Area2D
 signal reached_target_depth()
 signal returned()
 
-const SPEED: float = 400.0
+const SPEED: float = 500.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D as CollisionShape2D
 @onready var armed: bool = false
